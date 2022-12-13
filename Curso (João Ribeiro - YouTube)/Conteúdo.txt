@@ -1,0 +1,13 @@
+Introdução:
+
+	Site oficial:
+
+		https://vuejs.org/
+
+	Documentação:
+
+		https://br.vuejs.org/v2/guide/index.html
+
+	
+
+-----------------------------------------------------------------------------------------------------------
