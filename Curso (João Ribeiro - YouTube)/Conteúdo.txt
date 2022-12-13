@@ -8,6 +8,50 @@ Introdução:
 
 		https://br.vuejs.org/v2/guide/index.html
 
-	
+	Ambientes que podemos trabalhar através do navegador:
+
+		jsfiddle.net
+
+		codepen.io
 
 -----------------------------------------------------------------------------------------------------------
+
+Aula 02 - 03:
+
+HTML:
+
+	<html>
+	  <head>
+    
+	  </head>
+  
+  	<body>
+  
+  	<!-- 
+	    <h3 class="color-text">Olá, VUE!</h3>
+	  -->
+  
+  	<div id="root">
+	    <p>{{nome}}</p>
+	  </div>
+  
+  	</body>
+	</html>
+
+CSS:
+
+	.color-text{
+	  color: red;
+	}
+
+VUE:
+
+	let root = new Vue({
+	 el: "#root",
+	 data: {
+	 	nome: "Ricardo Martins"
+	 }
+	});
+
+-----------------------------------------------------------------------------------------------------------
+
