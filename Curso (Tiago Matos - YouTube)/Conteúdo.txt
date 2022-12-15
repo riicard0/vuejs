@@ -1,0 +1,125 @@
+Aula 1: ---------------------------------------------------------------------------------------------------
+
+Intro:
+
+  Vue.js nada mais é do que um Javascript Progressivo (The Progressive JavaScript Framework), pois com 
+  esse framework você consegue instalar pequenos componentes dentro do seu sistema antigo tanto quanto 
+  num novo sistema. Resumindo, é um framework javascript para construir interfaces.
+
+  Na camada "Model View Controller Arquitetura" o Vue.js se encaixa no "View" pois ele trabalha com a 
+  interface, na camada "Model" e "Controller" é relacionada a back-end então envolve outros assuntos.
+
+  No Vue.js:
+
+	- Tudo é componente
+	- Tudo é reativo
+	- Super rápido
+
+
+  Componente de arquivo único, exemplo:
+
+	<template>
+	  <div>
+	    <h1 class="title">
+	      {{ title }}
+	    </h1>
+	  </div>
+	</template>
+
+	<script>
+	  export default{
+	    name: 'MyComponent',
+
+	    data() {
+	      return {
+		title: 'Hello World',
+	      };
+	    },
+
+	    methods: {},
+	  };
+	</script>
+
+	<style>
+	  .title {
+	    font-size: 20px;
+	  }
+	</style>
+
+  Ou seja, sendo arquivo de componente único, a visualização é melhor, pois não é preciso abrir 
+  vários arquivos para estilização ou script.
+
+Diretivas:
+
+  Condição e loops (v-if, v-else, v-else-if, v-for)
+  Bind (v-bind)
+  Two-way data binding (v-model)
+  Eventos (v-on)
+  Watchers
+  ...
+
+Dependências para conseguir assistir o curso:
+
+  - Javascript Intermediário
+  - HTML
+  - CSS
+
+Ecossistema:
+
+  Vue Dev Tools
+  Vue CLI
+  Vue Router
+  Vuex
+  Vue Server Render
+
+Para dar super poderes ao Vue.js podemos utilizar:
+
+  Nuxt.js
+  Quasar
+
+
+Aula 2: ---------------------------------------------------------------------------------------------------
+
+Documentação:
+
+	https://vuejs.org/guide/introduction.html
+
+Utilizar Vue.js através do CDN (without build tools):
+
+  Dentro do "index.html" utilize:
+
+	<head>
+
+	  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+	</head>
+	<body>
+
+	  <div id="app">{{ message }}</div>
+
+	  <script>
+	    const { createApp } = Vue
+
+	    createApp({
+	      data() {
+	        return {
+	          message: 'Hello Vue 3!'
+	        }
+	      }
+	    }).mount('#app')
+	  </script>
+
+	</body>
+
+  Aqui já podemos utilizar o Vue.js normalmente.
+
+  Porém se vamos começar um projeto do zero o melhor é utilizar o "Vue CLI" (with build tools), para 
+  ver a documentação, acesse:
+
+	https://cli.vuejs.org/guide/
+
+
+
+  instalar o npm: https://www.youtube.com/watch?v=yrxG24n1oXI
+  parei em 6:42: https://www.youtube.com/watch?v=G7lSV_tKruQ&list=PLcoYAcR89n-qTYqfWTGxXMnAvCqY3JF8w&index=2
+  
