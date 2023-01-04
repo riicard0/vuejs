@@ -205,8 +205,65 @@ Começo de tudo:
 
   Assim, acabamos de ligar um servidor local para desenvolvimento da nossa aplicação.
 
+  No caso, ocorreu um erro no terminal:
+
+	ERROR in Conflict: Multiple assets emit different content to the same filename index.html
+
+  Consegui arrumar tirando o HTML da pasta "public" e colocando dentro da própria pasta "app" (raiz do 
+  projeto), depois a aplicação rodou normalmente.
+
 Aula 3: ===================================================================================================
 
 Componentes de arquivo único SFC:
 
-  
+  Single File Component (Componente de Arquivo Único) ou SFC.
+
+  Todos os componentes que criarmos tem que ter a extensão ".vue". Por exemplo, no arquivo que foi criado 
+  chamado "app.vue" na primeira camada dentro dele temos o nosso HTML, na segunda camada o Javascript e 
+  por último temos a camada do CSS. Exatamente por isso tem esse nome "SFC", pois em um único arquivo 
+  temos as três camadas necessárias.
+
+  Dentro da pasta "components", que está dentro de "src", vamos criar nossos "components", como exemplo:
+
+	TheHeader.vue
+
+  Não colocaremos somente "Header.vue" pois já temos um elemento HTML chamado "header" e isso criaria 
+  conflitos. Então evite criar nomes de componentes que sejam iguais a nome de elementos HTML.
+
+---------------------------------------------------------------------------------------------------
+
+Módulos (import/export):
+
+  Módulos Javascript nada mais é do que exportar funcionalidades e importar funcionalidades. Ou seja, 
+  por exemplo, eu possuo dois arquivos ".js", "main.js" e o "superHero.class.js" digamos, dentro do 
+  segundo arquivo vamos deixar diversas funcionalidades lá dentro, como funções, métodos, classes, etc. e 
+  dentro do primeiro arquivo "main.js" importaremos somente o necessário no momento para que possamos 
+  trabalhar de forma dinâmica e confortável.
+
+  Tipos:
+
+	export default nomeVariavel;
+
+	import nomeVariavel from 'arquivo.js';
+
+  ou
+
+	export function user() {};
+
+	import { user } from 'arquivo.js';
+
+---------------------------------------------------------------------------------------------------
+
+  Para importarmos, temos de ir dentro de "components" no arquivo "app.vue", lembresse dessa sequência:
+
+	script
+	export
+	template
+
+  O que estou dizendo, primeiro instanciaremos o "TheHeader.vue" com "import" dentro da tag "script", 
+  depois instanciaremos no "export" (dentro da propriedade "components") e também instanciaremos dentro 
+  da tag "template" uma tag de mesmo nome, no caso "TheHeader". Um complementa o outro, pois faltando 
+  algum deles o EsLint é bem chato e ficará acusando erro atrás de erro.
+
+Aula 4: ===================================================================================================
+
