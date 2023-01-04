@@ -1,4 +1,4 @@
-Aula 1: ---------------------------------------------------------------------------------------------------
+Aula 1: ===================================================================================================
 
 Intro:
 
@@ -49,6 +49,8 @@ Intro:
   Ou seja, sendo arquivo de componente único, a visualização é melhor, pois não é preciso abrir 
   vários arquivos para estilização ou script.
 
+---------------------------------------------------------------------------------------------------
+
 Diretivas:
 
   Condição e loops (v-if, v-else, v-else-if, v-for)
@@ -58,11 +60,15 @@ Diretivas:
   Watchers
   ...
 
+---------------------------------------------------------------------------------------------------
+
 Dependências para conseguir assistir o curso:
 
   - Javascript Intermediário
   - HTML
   - CSS
+
+---------------------------------------------------------------------------------------------------
 
 Ecossistema:
 
@@ -72,17 +78,21 @@ Ecossistema:
   Vuex
   Vue Server Render
 
+---------------------------------------------------------------------------------------------------
+
 Para dar super poderes ao Vue.js podemos utilizar:
 
   Nuxt.js
   Quasar
 
 
-Aula 2: ---------------------------------------------------------------------------------------------------
+Aula 2: ===================================================================================================
 
 Documentação:
 
 	https://vuejs.org/guide/introduction.html
+
+---------------------------------------------------------------------------------------------------
 
 Utilizar Vue.js através do CDN (without build tools):
 
@@ -118,8 +128,85 @@ Utilizar Vue.js através do CDN (without build tools):
 
 	https://cli.vuejs.org/guide/
 
+---------------------------------------------------------------------------------------------------
 
+Instalação NPM:
 
-  instalar o npm: https://www.youtube.com/watch?v=yrxG24n1oXI
-  parei em 6:42: https://www.youtube.com/watch?v=G7lSV_tKruQ&list=PLcoYAcR89n-qTYqfWTGxXMnAvCqY3JF8w&index=2
+  Para instalar o "npm", dentro do VS Code utilizando o terminal com "Powershell", basta ir em:
+
+	https://cli.vuejs.org/guide/installation.html
+
+  E executar os comandos ordenados:
+
+	npm install -g @vue/cli
+
+  E depois, se precisar, fazer "update", no caso segui o que o próprio terminal indicou:
+
+	npm install -g npm@9.2.0
+
+  E por fim ver a versão em que está:
+
+	npm --version
+
+---------------------------------------------------------------------------------------------------
+
+Política de Segurança do Windows 10 contra Scripts:
+
+  No Windows 10, há uma política de segurança contra scripts que não forem assinados, 
+  evitando que rode em sua máquina, para conseguirmos atuar sobre isso, rode dentro do Powershell, 
+  lembrando que temos que executar o comando em "modo administrador":
+
+	Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
+
+	y
+
+  Caso queira obter o status antes de executar o comando acima, utilize:
+
+	Get-ExecutionPolicy
+
+  Para mais informações:
+
+	https://pt.stackoverflow.com/questions/220078/o-que-significa-o-erro-execu%C3%A7%C3%A3o-de-scripts-foi-desabilitada-neste-sistema
+
+---------------------------------------------------------------------------------------------------
+
+Começo de tudo:
+
+  Agora, após tudo isso, execute no terminal do VS Code com Powershell, lembrando de ter instalado na sua 
+  máquina o "Node":
+
+	vue create app
+
+  O nome "app" quem cria é você. Escolha a opção do "Default ([Vue 3] babel, eslint)", ou seja, o Vue 3. 
+  O próprio terminal te indicará os comandos, então:
+
+	cd app
+
+  Sobre os arquivos dentro desta pasta que foi criada pelo "Vue":
+
+    - Não mexa em "node_modules", aqui existem todas as dependências para que nosso projeto possa 
+    funcionar em ambiente de desenvolvimento.
+
+    - A pasta "public" será aonde estarão os arquivos públicos, obviamente, onde estarão todos os arquivos 
+    estáticos.
+
+    - Na pasta "src" será onde a mágica irá acontecer de verdade. O arquivo "main.js" é o arquivo de 
+    entrada dentro do "Vue.js". A pasta "Assets" onde ficarão as imagens, vídeo, css global, etc. Na 
+    pasta "components" será onde ficarão nossos componentes.
+
+    - Os outros arquivos que estarão isolados dentro da pasta criada, no caso "app", não precisaremos nos 
+    preocupar no momento. Existe somente um que é o "vue.config.js" que será onde ocorrerão algumas 
+    configurações especiais caso precise no nosso projeto.
+
+  Através do CDN utilizamos um link dentro do HEAD do HTML para instanciarmos o "Vue.js", aqui rodaremos 
+  um comando no terminal, que também foi indicado pelo próprio terminal:
+
+	npm run serve
+
+  Assim, acabamos de ligar um servidor local para desenvolvimento da nossa aplicação.
+
+Aula 3: ===================================================================================================
+
+Componentes de arquivo único SFC:
+
   
