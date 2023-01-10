@@ -497,6 +497,9 @@ Atributos Dinâmicos com data binding (diretiva v-bind):
 
   A diretiva "v-bind" é um atributo dinâmico, ou seja, todo valor passado para ela terá de ser dinâmico.
 
+  A diretiva "v-bind" é no formato "One-Way data binding", ou seja, temos a possibilidade de alterar o 
+  valor somente pelo sistema.
+
 	<template>
 	 <div>
 	    <img 
@@ -623,4 +626,57 @@ Aula 8: ========================================================================
 
 Ligação de Dados Bidirecional (diretiva v model):
 
-  
+  A diretiva "v-model", diferente da "v-bind", é no formato "Two-Way data binding", ou seja, temos a 
+  possibilidade de alterar o valor tanto pelo sistema (back-end) quanto pelo usuário (front-end).
+
+	<template>
+	  <div>
+	    <label>Nome:</label>
+	    <br>
+	    <input v-model="name" type="text">
+	    <br>
+	    {{ name }}
+	  </div>
+	</template>
+
+	<script>
+	  export default {
+	    name: 'App',
+	    data() {
+	      return {
+	        name: 'Jon Snow',
+	      }
+	    }
+	  }
+	</script>
+
+  Ele funciona praticamente como o "v-bind" na escrita, porém utiliza do conceito de "Two-Way data 
+  binding" como dito anteriormente. Funciona muito bem com formulários:
+
+	<template>
+	  <div>
+	    <label>Sports:</label>
+	    <br>
+	    <select v-model="sports">
+	      <option value="">Escolha</option>
+	      <option value="Futebol">Futebol</option>
+	      <option value="Skate">Skate</option>
+	      <option value="Tenis">Tenis</option>
+	    </select>
+	    <br>
+	    {{ sports }}
+	  </div>
+	</template>
+
+	<script>
+	  export default {
+	    name: 'App',
+	    data() {
+	      return {
+	        name: 'Jon Snow',
+	        sports: '',
+	      }
+	    }
+	  }
+	</script>
+

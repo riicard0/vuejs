@@ -1,159 +1,25 @@
 <template>
-  <!-- Exemplo 1 = "v-show" -->
-  <TheHeader v-show="showHeader" />
-
-  <!-- Exemplo 2 = Variáveis -->
-  <div v-show="showName">
-    Nome: {{ firstName }}
-    <br>
-    Sobrenome: {{ lastName }}
-    <br>
-    Nome completo: {{ firstName + ' ' + lastName }}
-  </div>
-
-  <!-- Exemplo 3 = "v-if" -->
-  <div v-show="showIf">
-    <div v-if="accessLevel === 'admin'">Administrador</div>
-    <div v-else-if="accessLevel === 'marketing'">Marketing</div>
-    <div v-else>Current User</div>
-  </div>
-
-  <!-- Exemplo 4 = "v-for" -->
-  <div v-show="showFor">
-    <div v-for="(obj, index) in todos" v-bind:key="obj.id" class="todos-item">
-      {{ index+=1 }} - {{ obj.title }}
-    </div>
-  </div>
-
-  <!-- Exemplo 5 = "v-bind" -->
-  <div v-show="showBind">
-    <img v-bind:src="imgSrc" v-bind:alt="imgAlt">
-  </div>
-
-  <!-- Exemplo 6 = "v-bind" com "v-for" e "v-if" -->
-  <div v-show="showFor">
-    <div v-for="(obj, index) in todos" :key="obj.id" class="todos-item">
-      <img v-if="obj.imgSrc" :src="obj.imgSrc">
-      {{ index+=1 }} - {{ obj.title }}
-    </div>
-  </div>
-
-  <!-- Exemplo 7 = "v-bind" com "Class" -->
   <div>
-    <h1 :class="{ 'title': true, 'title-home': isHome }">Curso Vue 3</h1>
+    Começar > Aula 9
   </div>
 
-  <!-- Exemplo 8 = "v-bind" -->
-  <p :class="['text', 'title', { 'text-home': isHome }]">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad laborum esse distinctio qui quia autem, cum voluptas
-    debitis, repellat deserunt nisi beatae hic ipsum neque voluptate. Fugiat debitis cupiditate beatae.
-  </p>
-
-  <p :style="styleClass">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, quia?
-  </p>
-
-  <!-- Welcome VUE.JS -->
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <br>
+  <br>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import TheHeader from './components/TheHeader';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-    TheHeader
-  },
   data() {
     return {
-      showHeader: false,
-      firstName: 'Jon',
-      lastName: 'Snow',
-      showName: false,
-      showIf: false,
-      accessLevel: '',
-      todos: [
-        {
-          "userId": 1,
-          "id": 1,
-          "title": "delectus aut autem",
-          "completed": false,
-          "imgSrc": 'https://via.placeholder.com/150'
-        },
-        {
-          "userId": 1,
-          "id": 2,
-          "title": "quis ut nam facilis et officia qui",
-          "completed": false,
-          "imgSrc": 'https://via.placeholder.com/150'
-        },
-        {
-          "userId": 1,
-          "id": 3,
-          "title": "fugiat veniam minus",
-          "completed": false
-        },
-        {
-          "userId": 1,
-          "id": 4,
-          "title": "et porro tempora",
-          "completed": true
-        },
-        {
-          "userId": 1,
-          "id": 5,
-          "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-          "completed": false
-        }
-      ],
-      showFor: false,
-      imgSrc: 'https://via.placeholder.com/150',
-      imgAlt: 'Foto de Jon Snow',
-      showBind: false,
-      classVar: 'title',
-      isHome: true,
-      pClass: 'text',
-      styleClass: { 'color': 'aqua', 'background-color': 'black' }
+
     }
   }
 }
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin: 60px;
-}
 
-.todos-item {
-  background: #000;
-  margin: 0 0 5px 0;
-  padding: 3px 6px;
-  color: #fff;
-}
-
-.title {
-  font-size: 20px;
-  color: blue;
-}
-
-.title-home {
-  font-size: 40px;
-  color: green;
-}
-
-.text {
-  color: yellow;
-}
-
-.text-home {
-  color: #42b983;
-}
 </style>
