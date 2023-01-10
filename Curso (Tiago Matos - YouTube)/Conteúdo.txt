@@ -495,4 +495,132 @@ Aula 6: ========================================================================
 
 Atributos Dinâmicos com data binding (diretiva v-bind):
 
+  A diretiva "v-bind" é um atributo dinâmico, ou seja, todo valor passado para ela terá de ser dinâmico.
+
+	<template>
+	 <div>
+	    <img 
+	      v-bind:src="imgSrc"
+	      v-bind:alt="imgAlt"
+	    >
+	  </div>
+	</template>
+
+	<script>
+	import HelloWorld from './components/HelloWorld.vue'
+	import TheHeader from './components/TheHeader';
+
+	export default {
+	  name: 'App',
+	  components: {
+	    HelloWorld,
+	    TheHeader
+	  },
+	  data(){
+	    return {
+	      imgSrc: 'https://via.placeholder.com/150',
+	      imgAlt: 'Foto de Jon Snow'
+	          }
+	        }
+	      }
+	</script>
+
+  Imagine, por exemplo, seguindo o exemplo acima, que a imagem vem de uma "API" e o "Alt" venha do banco 
+  de dados, ou seja, dinamicamente.
+
+  Existe uma forma de declarar o "v-bind" que acaba por deixar o código mais limpo, que é somente 
+  declarando o ":". Olha a dirença do exemplo anterior para agora:
+
+  Exemplo anterior:
+
+	v-bind:alt="imgAlt"
+
+  Novo exemplo:
+
+	:alt="imgAlt"
+
+  O "Vue.js" identifica que estamos chamando o "v-bind" então o declara. Claramente que o valor que irá 
+  dentro dos parênteses é uma variável.
+
+Aula 7: ===================================================================================================
+
+Atributos Class e Style dinâmicos:
+
+  Exemplo:
+
+	<template>
+	  <div>
+	    <h1 :class="classVar">Curso Vue 3</h1>
+	  </div>
+	</template>
+
+	<script>
+	  export default {
+	    name: 'App',
+	    components: {
+	    },
+	    data(){
+	      return{
+		  classVar: 'title'
+		}
+	    }
+	</script>
+
+	<style>
+	  .title{
+	    font-size: 20px;
+	    color: blue;
+	  }
+	</style>
+
+  Dessa forma chamamos uma "Class" dinamicamente.
+
+  Lembrando que no valor da "v-bind" podemos utilizar:
+
+	{}
+	[]
+	['', '', {}]
+
+  Ou seja, objetos, arrays e caso queira arrays com objetos também.
+
+  Outro exemplo:
+
+	<h1 :class="{ 'title': true }">Curso Vue 3</h1>
+
+  Esse "true" que está como valor do "v-bind" pode ser trocado por alguma outra coisa dinâmica.
+
+  Outro exemplo:
+
+	<h1 :class="{ 'title': true, 'title-home': isHome }">Curso Vue 3</h1>
+
+  Outro exemplo:
+
+	  <p :class="['text', 'title', { 'text-home': isHome }]">
+	    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+	  </p>
+
+  Ou seja, podemos também passar múltiplos campos dentro do valor do "v-bind".
+
+---------------------------------------------------------------------------------------------------
+
+Agora exemplo com o "style":
+
+  No "template":
+
+	 <p :style="styleClass">
+	  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, quia?
+	 </p>
+
+  No "script":
+
+	data(){
+	  return{
+	    styleClass: { 'color': 'aqua', 'background-color': 'black' }
+	  }
+	}
+
+Aula 8: ===================================================================================================
+
+Ligação de Dados Bidirecional (diretiva v model):
+
   
