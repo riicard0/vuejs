@@ -258,3 +258,78 @@ Aula 8: ========================================================================
 
 Aula 9: ===================================================================================================
 
+<template>
+  <!-- Exemplo 1 -->
+  <div>
+    <button @click.once="onClick()">Enviar</button>
+  </div>
+
+  <br>
+  <br>
+
+  <!-- Exemplo 2 -->
+  <div @mouseover="onMouseOver()" @mouseout="onMouseOut()">
+    Mouse Over / Out
+  </div>
+
+  <br>
+  <br>
+
+  <!-- Exemplo 3 -->
+  <div>
+    <form action="https://google.com" @submit.prevent.once="onSubmit">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <br>
+  <br>
+
+  <!-- Exemplo 4 -->
+  <div>
+    <input @keyup.enter="onKeyUp" type="text">
+  </div>
+
+  <br>
+  <br>
+
+</template>
+
+<script>
+
+export default {
+  name: 'App',
+
+  data() {
+    return {
+
+    }
+  },
+
+  methods: {
+    onClick() {
+      console.log('click');
+    },
+    onMouseOver() {
+      console.log('mouse over');
+    },
+    onMouseOut() {
+      console.log('mouse out');
+    },
+    onSubmit() {
+      console.log('submit');
+    },
+    onKeyUp() {
+      console.log('onKeyUp');
+    }
+  }
+}
+
+</script>
+
+<style>
+
+</style>
+
+Aula 10: ==================================================================================================
+

@@ -680,3 +680,136 @@ Ligação de Dados Bidirecional (diretiva v model):
 	  }
 	</script>
 
+Aula 9: ===================================================================================================
+
+Eventos:
+
+  Lembro que Vue.js é Javascript, então podemos capturar todo evento que quisermos.
+
+  Agora iremos trabalhar com a diretiva "v-on", ela é a que captura o evento desejado. A sintaxe dela é 
+  chamar a diretiva, depois o evento desejado, e o valor, que no exemplo abaixo será uma função:
+
+	<button v-on:click="onClick">
+	  Enviar
+	</button>
+
+  Assim como no "v-bind" que podemos chamar o ":" ao invés do comando inteiro, economizando código e 
+  deixando melhor indentado, no "v-on" podemos utilizar o "@" que o "Vue.js" reconhece que estamos 
+  chamando essa determinada diretiva.
+
+	<button @click="onClick">
+	  Enviar
+	</button>
+
+  Lembrando que no "script", as funções sempre ocorrerão dentro de um novo campo, chamado "methods".
+
+---------------------------------------------------------------------------------------------------
+
+Existem os "modificadores de eventos":
+
+	https://br.vuejs.org/v2/guide/events.html#Modificadores-de-Evento
+
+  Bom, existem alguns modificadores de eventos como sufixo para a diretiva "v-on":
+
+  - Esse sufixo modificador de evento interrompe a propagação do evento.
+
+	.stop
+
+  - Previne de carregar o evento.
+
+	.prevent
+
+  - Usar modo de captura ao adicionar o evento.
+
+	.capture
+
+  - Só aciona o evento caso o event.target seja o próprio elemento, ou seja, o elemento pai.
+  
+	.self
+
+  - Só aciona o evento uma vez.
+
+	.once
+
+  - Comunica ao navegador que você não quer prevenir o comportamento padrão do evento. O ".passive" é 
+  especialmente útil para otimizar desempenho em dispositivos móveis.
+
+	.passive
+
+  Lembrando que modificadores podem ser encadeados, exemplo:
+
+	<a @click.stop.prevent="doThat"></a>
+
+  A ordem importa ao utilizar modificadores pois o código relevante é gerado na mesma ordem. Desta forma:
+
+	@click.prevent.self 
+
+  prevenirá todos os cliques, enquanto:
+
+	@click.self.prevent 
+
+  prevenirá apenas cliques no próprio elemento.
+
+  Não use ".passive" e ".prevent" juntos, pois ".prevent" será ignorado e seu navegador provavelmente 
+  exibirá um aviso. Lembre-se, ".passive" comunica ao navegador que você não quer prevenir o 
+  comportamento padrão do evento.
+
+  Existem também as "Key Codes", que são sufixos modificadores de eventos que ocorre quando você fizer 
+  determinado ação para com o teclado, exemplo:
+
+	https://br.vuejs.org/v2/guide/events.html#Key-Codes
+
+  - O evento só ocorrerá a partir do momento que "enter" for pressionado:
+
+	.enter
+
+  Último exemplo de modificador de evento:
+
+	<template>
+	  <div>
+
+	    <form 
+	      action="https://google.com" 
+	      @submit.prevent.once="onSubmit"
+	    >
+
+	      <input 
+	        type="text"
+	        @keyup.enter="onKeyUp"
+	      >
+
+	      <button type="submit">Enviar</button>
+
+	    </form>
+
+	  </div>
+	</template>
+
+	<script>
+	  
+	  export default {
+	    name: 'App',
+
+	    data() {
+	      return {
+	
+	      }
+	    },
+
+	    methods: {
+	      onSubmit() {
+	        console.log('submit');
+	      },
+	      onKeyUp() {
+	        console.log('onKeyUp');
+	      }
+	    }
+	  }
+
+	</script>
+
+Aula 10: ==================================================================================================
+
+Propriedade Computada (computed):
+
+  

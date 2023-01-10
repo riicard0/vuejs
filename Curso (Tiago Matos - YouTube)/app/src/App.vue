@@ -1,23 +1,24 @@
 <template>
   <div>
-    Começar > Aula 9
+    Começar Aula 10
   </div>
-
-  <br>
-  <br>
 </template>
 
 <script>
-
 export default {
   name: 'App',
+  components: {
+
+  },
   data() {
     return {
 
     }
+  },
+  methods: {
+
   }
 }
-
 </script>
 
 <style>
