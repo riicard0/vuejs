@@ -812,4 +812,80 @@ Aula 10: =======================================================================
 
 Propriedade Computada (computed):
 
-  
+  Propriedade computada é quando você quer montar um valor, baseado em outros valores, ou seja, um valor 
+  final vindo de outros valores. Para isso teremos agora um novo campo em "export" chamado "computed", 
+  esse campo é o que fará a propriedade computada, exemplo:
+
+	<template>
+	  <div>
+	    {{ fullName }}
+	  </div>
+	</template>
+
+	<script>
+	export default {
+	  name: 'App',
+	  components: {
+	
+	  },
+	  data() {
+	    return {
+	      user: {
+	        first_name: 'Jon',
+	        last_name: 'Snow'
+	      }
+	    }
+	  },
+	  computed: {
+	    fullName() {
+	      return `${this.user.first_name} ${this.user.last_name}`
+	    }
+	  },
+	  methods: {
+	
+	  }
+	}
+	</script>
+
+  Ou seja, dentro de "export" na tag "script", criamos o objeto "user" e adicionamos duas propriedade, no 
+  campo "computed" criamos uma função que juntará essas propriedades criadas anteriormente, utilizando de 
+  "template string". Para chamar elas utilizamos o "this". Depois para aparecer no nosso código, lá na tag 
+  "template", continua sendo a mesma coisa.
+
+  A vantagem disso é que o "Vue.js" irá processar isso de uma maneira bem mais rápida e será recomputado 
+  toda vez que alterarmos qualquer valor internamente.
+
+---------------------------------------------------------------------------------------------------
+
+Colocar "Vue.js" numa variável global:
+
+	Vá em "main.js" e na linha com o seguinte código:
+
+		createApp(App).mount('#app')
+
+	Adicione antes:
+
+		window.app = 
+
+	Ficando assim:
+
+		window.app = createApp(App).mount('#app')
+
+	Agora podemos consultar o "Vue.js" do próprio console do navegador pela variável global "app".
+
+---------------------------------------------------------------------------------------------------
+
+Diferença entre "computed" e "methods":
+
+  Caso agora formos no console do navegador e alterarmos o valor de alguma dessas propriedades de "user" 
+  que criamos, o valor será alterado e recomputado na hora.
+
+  A diferença do campo "computed" para o campo "methods" é que no campo "methods" o sistema ficará 
+  recomputando a função toda hora, gastando assim mais memória, já no campo "computed" já está "cacheado" 
+  (cache), ou seja, só irá recomputar novamente quando alguns dos valores forem alterados.
+
+  Por isso é mais recomendado o "computed" quando você tem que fazer o valor final dependente de outros 
+  valores.
+
+Aula 11: ==================================================================================================
+

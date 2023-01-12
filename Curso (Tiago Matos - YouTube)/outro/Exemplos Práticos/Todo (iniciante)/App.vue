@@ -1,7 +1,7 @@
 <template>
   <div>
-
-    <!-- TENTAR RECRIAR ESSA TODO LIST SOZINHO / PAREI NA AULA 11 -->
+    <!-- Esse exemplo diz sobre uma todo list entre processos completados e não completados aparecendo de 
+    forma dinâmica no front do projeto -->
 
     <!-- Exemplo 2 - Aula 10 -->
     <h2>Todos em aberto</h2>
