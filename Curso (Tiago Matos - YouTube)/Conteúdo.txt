@@ -254,15 +254,39 @@ Módulos (import/export):
 
 ---------------------------------------------------------------------------------------------------
 
-  Para importarmos, temos de ir dentro de "components" no arquivo "app.vue", lembresse dessa sequência:
+  Para importarmos, temos de ir dentro de "script" e "template" no arquivo "app.vue", lembresse dessa 
+  sequência:
 
-	script
-	export
+	import
+	components
 	template
 
-  O que estou dizendo, primeiro instanciaremos o "TheHeader.vue" com "import" dentro da tag "script", 
+  Ou seja, na prática:
+
+	<template>
+
+	  <HelloWorld />
+
+	</template>
+
+	<script>
+
+	  import HelloWord from './components/HelloWorld';
+
+	  export default {
+	    name: 'App',
+	    components: {
+	      HelloWorld
+	    }
+	  }
+
+	</script>
+
+  Assim
+
+  O que estou dizendo, primeiro instanciaremos o "HelloWorld.vue" com "import" dentro da tag "script", 
   depois instanciaremos no "export" (dentro da propriedade "components") e também instanciaremos dentro 
-  da tag "template" uma tag de mesmo nome, no caso "TheHeader". Um complementa o outro, pois faltando 
+  da tag "template" uma tag de mesmo nome, no caso "HelloWorld". Um complementa o outro, pois faltando 
   algum deles o EsLint é bem chato e ficará acusando erro atrás de erro.
 
 Aula 4: ===================================================================================================
@@ -889,3 +913,64 @@ Diferença entre "computed" e "methods":
 
 Aula 11: ==================================================================================================
 
+Observadores (watch):
+
+  O observador é o "watch", esse observador será um novo campo dentro de "export" da tag "script" que 
+  trabalhará, claramente, observando tudo que acontece dentro do código avisando assim ao "Vue.js" dentro 
+  de determinadas obrigações impostas a ele por você.
+
+	export default {
+	  name: '',
+	  watch: {
+	    ...
+	  }
+	}
+
+  Ele funciona com função, exemplo:
+
+	watch: {
+	  pageCount() {
+            this.changePage();
+          }
+	},
+	methods: {
+	  changePage() {
+            console.log('Ajax changePage');
+          }
+	}
+
+  Nesse caso criamos uma função qualquer chamada "pageCount" e em "methods" criamos uma outra função no 
+  qual será observado.
+
+  Ele funciona com objeto, exemplo:
+
+	data(){
+	  return {
+	    user: {
+	      first_name: '',
+	      last_name: ''
+	    }
+	  }
+	},
+	watch: {
+	  user: {
+            handler() {
+              console.log('User alterado');
+            },
+            deep: true
+          }
+	}
+
+  Aqui no caso, temos o "watch" observando a variável "user" e suas propriedades, através da função 
+  "handler" que dirá que quando tal variável se alterar execute tal instrução, ou seja, no nosso caso, 
+  quando "user" se alterar execute o "console.log" e o "deep" com valor "true" diz que quando qualquer 
+  coisa dentro da variável "user" se alterar, dispare a função, ou seja, uma observação aprodundada, quer 
+  dizer que agora ele está observando profundamente, não somente na parte rasa.
+
+  Lembrando que o watch chamado tem que ser o mesmo nome da variável que quiser observar.
+
+Aula 12: ==================================================================================================
+
+Ciclo de Vida (life cicle):
+
+  
