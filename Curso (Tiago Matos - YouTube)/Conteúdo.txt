@@ -1027,3 +1027,5 @@ Ciclo de Vida (life cicle):
   alguma alteração no front dentro de um "input", o "beforeUpdate()" e o "updated()" irão acionar dizendo 
   que houve atualização. Porém esse recurso não será tão utilizado, é mais para "debug".
 
+Aula 13: ==================================================================================================
+
