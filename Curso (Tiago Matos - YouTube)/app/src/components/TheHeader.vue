@@ -5,14 +5,28 @@
 </template>
 
 <script>
-  export default{
-
+export default {
+  methods: {
+    resize($evt) {
+      console.log($evt);
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.resize);
+  },
+  beforeUnmount() {
+    console.log('>>> beforeUnmount');
+    window.removeEventListener('resize', this.resize);
+  },
+  unmounted() {
+    console.log('>>> unmounted');
   }
+}
 </script>
 
 <style>
-  .header{
-    background: #000;
-    color: #fff;
-  }
+.header {
+  background: #000;
+  color: #fff;
+}
 </style>

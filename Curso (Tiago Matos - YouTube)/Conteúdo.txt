@@ -973,4 +973,57 @@ Aula 12: =======================================================================
 
 Ciclo de Vida (life cicle):
 
-  
+  As fases do ciclo de vida do componente "Vue.js" são divididas em quatro:
+
+    - Criação:
+	você prepara o componente. Exemplo: Ajax, inicializar algumas variáveis; Não tem acesso ao 
+	template (DOM).
+
+    - Montagem:
+	Inicializar uma lib externa, geralmente precisa de acesso ao template (DOM); Tem acesso ao 
+	template (DOM).
+
+    - Atualização:
+	Geralmente é mais utilizado para "debug"; Update.
+
+    - Desmontagem:
+	Remover tudo o que for necessário para liberar memória.
+
+  Para interagirmos com essas fases, temos o que é chamado de "Hooks", sendo eles:
+
+	beforeCreate(){}	- Antes do componente ser criado.
+
+	Created(){}		- Componente foi criado.
+
+	beforeMount(){}		- Antes do componente ser montado.
+
+	Mounted(){}		- Componente foi montado.
+
+	beforeUnmount(){}	- Antes do componente ser desmontado.
+
+	Unmounted(){}		- Componente foi desmontado.
+
+  Todos essas funções serão feitas dentro da tag "script" em "export default".
+
+  Quando você cria, por exemplo, uma variável dentro de "data()", você só poderá ter acesso a ela depois 
+  de "created()", antes disso, em "beforeCreate()" não será possível acessá-la.
+
+  Ou seja, você só terá acesso ao "estado do componente" de "created()" pra frente.
+
+  Terá acesso ao DOM de "mounted()" pra frente.
+
+  No "Vue.js" temos um atributo especial chamado "$el" que dá acesso ao DOM, ou seja, o "$el" puxa o 
+  elemento raiz do componente.
+
+  É no "beforeUnmount()" que iremos destruir nossas libs, eventos, listeners.
+
+  Também não podemos nos esquecer da "Atualização" que será setada com:
+
+	beforeUpdate(){}
+
+	Updated(){}
+
+  Então neles, tudo que acontecer no componente irá disparar nesses dois, ou seja, imagine que você faça 
+  alguma alteração no front dentro de um "input", o "beforeUpdate()" e o "updated()" irão acionar dizendo 
+  que houve atualização. Porém esse recurso não será tão utilizado, é mais para "debug".
+
