@@ -520,7 +520,7 @@ export default {
 
 Aula 12: ==================================================================================================
 
-APP.VUE
+						APP.VUE
 
 <template>
   <div>
@@ -598,7 +598,7 @@ export default {
 
 </style>
 
-THEHEADER.VUE
+						THEHEADER.VUE
 
 <template>
   <header class="header">
@@ -635,7 +635,127 @@ export default {
 
 Aula 13: ==================================================================================================
 
+						App.vue
 
+<template>
+  <div>
+    <TheHeader v-if="showHeader">
+      <!-- Conteúdo "Title" -->
+      <!-- <template v-slot:title>
+        Title
+      </template> -->
+
+      <!-- Conteúdo "Description" -->
+      <template v-slot:description>
+        <h2>Description</h2>
+      </template>
+
+      <!-- Conteúdo "Default" -->
+      Default Slot
+    </TheHeader>
+
+  </div>
+</template>
+
+<script>
+import TheHeader from './components/TheHeader';
+
+export default {
+  name: 'App',
+  components: {
+    TheHeader
+  },
+  data() {
+    return {
+      showHeader: true
+    }
+  },
+  methods: {
+
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  // beforeCreate() {
+  //   console.log('>>> beforeCreate');
+  //   console.log('Estado: ', this.name);
+  //   console.log('DOM: ', this.$el);
+  // },
+  // created() {
+  //   console.log('>>> created');
+  //   console.log('Estado: ', this.name);
+  //   console.log('DOM: ', this.$el);
+  // },
+  // beforeMount() {
+  //   console.log('>>> beforeMount');
+  //   console.log('Estado: ', this.name);
+  //   console.log('DOM: ', this.$el);
+  // },
+  // mounted() {
+  //   console.log('>>> mounted');
+  //   console.log('Estado: ', this.name);
+  //   console.log('DOM: ', this.$el);
+  // },
+  // beforeUpdate() {
+  //   console.log('>>> beforeUpdate');
+  // },
+  // updated() {
+  //   console.log('>>> updated');
+  // }
+}
+
+</script>
+
+<style>
+
+</style>
+
+						TheHeader.vue
+
+<template>
+  <header class="header">
+
+    <!-- Conteúdo "Title" -->
+    <h1 v-if="$slots.title" class="title">
+      <slot name="title" />
+    </h1>
+
+    <!-- Conteúdo "Description" -->
+    <div class="description">
+      <slot name="description" />
+    </div>
+
+    <!-- Conteúdo "Default" -->
+    <div class="content ">
+      <slot />
+    </div>
+
+  </header>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  mounted() {
+    console.log('Elemento: ', this.$el);
+    console.log('Slots: ', this.$slots);
+  },
+}
+</script>
+
+<style>
+.header {
+  background: #000;
+  color: #fff;
+}
+</style>
 
 Aula 14: ==================================================================================================
+
+
+
+Aula 15: ==================================================================================================
 

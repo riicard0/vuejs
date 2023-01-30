@@ -1,18 +1,19 @@
 <template>
   <div>
-    <TheHeader v-if="showHeader" />
+    <TheHeader v-if="showHeader">
+      <!-- Conteúdo "Title" -->
+      <!-- <template v-slot:title>
+        Title
+      </template> -->
 
-    <h1>hello World</h1>
-    <br>
-    <br>
+      <!-- Conteúdo "Description" -->
+      <template v-slot:description>
+        <h2>Description</h2>
+      </template>
 
-    <input v-model="name" type="text">
-
-    {{ name }}
-    <br>
-    <br>
-
-    <button @click="showHeader = !showHeader">Ativar e desativar Header</button>
+      <!-- Conteúdo "Default" -->
+      Default Slot
+    </TheHeader>
 
   </div>
 </template>
@@ -27,7 +28,6 @@ export default {
   },
   data() {
     return {
-      name: 'Jon Snow',
       showHeader: true
     }
   },

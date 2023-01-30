@@ -1,26 +1,31 @@
 <template>
   <header class="header">
-    Header
+
+    <!-- Conteúdo "Title" -->
+    <h1 v-if="$slots.title" class="title">
+      <slot name="title" />
+    </h1>
+
+    <!-- Conteúdo "Description" -->
+    <div class="description">
+      <slot name="description" />
+    </div>
+
+    <!-- Conteúdo "Default" -->
+    <div class="content ">
+      <slot />
+    </div>
+
   </header>
 </template>
 
 <script>
 export default {
-  methods: {
-    resize($evt) {
-      console.log($evt);
-    }
-  },
+  name: 'App',
   mounted() {
-    window.addEventListener('resize', this.resize);
+    console.log('Elemento: ', this.$el);
+    console.log('Slots: ', this.$slots);
   },
-  beforeUnmount() {
-    console.log('>>> beforeUnmount');
-    window.removeEventListener('resize', this.resize);
-  },
-  unmounted() {
-    console.log('>>> unmounted');
-  }
 }
 </script>
 

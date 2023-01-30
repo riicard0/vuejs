@@ -46,7 +46,7 @@ Intro:
 	  }
 	</style>
 
-  Ou seja, sendo arquivo de componente único, a visualização é melhor, pois não é preciso abrir 
+  Ou seja, sendo "Componente de Árquivo Único", a visualização é melhor, pois não é preciso abrir 
   vários arquivos para estilização ou script.
 
 ---------------------------------------------------------------------------------------------------
@@ -228,14 +228,14 @@ Componentes de arquivo único SFC:
 	TheHeader.vue
 
   Não colocaremos somente "Header.vue" pois já temos um elemento HTML chamado "header" e isso criaria 
-  conflitos. Então evite criar nomes de componentes que sejam iguais a nome de elementos HTML.
+  conflitos. Então evite criar nomes de componentes que sejam iguais a nomes de elementos HTML.
 
 ---------------------------------------------------------------------------------------------------
 
 Módulos (import/export):
 
   Módulos Javascript nada mais é do que exportar funcionalidades e importar funcionalidades. Ou seja, 
-  por exemplo, eu possuo dois arquivos ".js", "main.js" e o "superHero.class.js" digamos, dentro do 
+  por exemplo, eu possuo dois arquivos ".js" ("main.js" e o "superHero.class.js"), digamos, dentro do 
   segundo arquivo vamos deixar diversas funcionalidades lá dentro, como funções, métodos, classes, etc. e 
   dentro do primeiro arquivo "main.js" importaremos somente o necessário no momento para que possamos 
   trabalhar de forma dinâmica e confortável.
@@ -250,7 +250,7 @@ Módulos (import/export):
 
 	export function user() {};
 
-	import { user } from 'arquivo.js';
+	import { user } from 'script.js';
 
 ---------------------------------------------------------------------------------------------------
 
@@ -261,7 +261,10 @@ Módulos (import/export):
 	components
 	template
 
-  Ou seja, na prática:
+  Ou seja, iremos instanciar o arquivo externo primeiro dentro da tag "script" com o "import", depois 
+  chamá-lo dentro de "components" e por último chamá-lo dentro da tag "template".
+
+  Na prática:
 
 	<template>
 
@@ -309,7 +312,7 @@ Declarações condicionais (diretiva v-if v-show):
 	  <TheHeader v-show="showHeader"  />
 	</template>
 
-  Acima criamos uma variável com "v-show".
+  Acima temos uma variável dentro de "v-show".
 
 	export default {
 	  name: 'App',
@@ -413,6 +416,8 @@ Instruções de loops (diretiva v-for):
 
 	https://jsonplaceholder.typicode.com/todos?_limit=5
 
+  Mudando o final do endereço do site alteramos o tanto de "to do" que queremos.
+
   Exemplo:
 
 	<template>
@@ -436,12 +441,6 @@ Instruções de loops (diretiva v-for):
 	  },
 	  data(){
 	    return {
-	      showHeader: false,
-	      firstName: 'Jon',
-	      lastName: 'Snow',
-	      showName: false,
-	      showIf: false,
-	      accessLevel: '',
 	      todos: [
 	        {
 	          "userId": 1,
@@ -567,7 +566,7 @@ Atributos Dinâmicos com data binding (diretiva v-bind):
 	:alt="imgAlt"
 
   O "Vue.js" identifica que estamos chamando o "v-bind" então o declara. Claramente que o valor que irá 
-  dentro dos parênteses é uma variável.
+  dentro das aspas é uma variável.
 
 Aula 7: ===================================================================================================
 
@@ -735,28 +734,28 @@ Existem os "modificadores de eventos":
 
   Bom, existem alguns modificadores de eventos como sufixo para a diretiva "v-on":
 
-  - Esse sufixo modificador de evento interrompe a propagação do evento.
+  - Esse sufixo modificador de evento interrompe a propagação do evento:
 
 	.stop
 
-  - Previne de carregar o evento.
+  - Previne de carregar o evento:
 
 	.prevent
 
-  - Usar modo de captura ao adicionar o evento.
+  - Usar modo de captura ao adicionar o evento:
 
 	.capture
 
-  - Só aciona o evento caso o event.target seja o próprio elemento, ou seja, o elemento pai.
+  - Só aciona o evento caso o "event.target" seja o próprio elemento, ou seja, o elemento pai:
   
 	.self
 
-  - Só aciona o evento uma vez.
+  - Só aciona o evento uma vez:
 
 	.once
 
   - Comunica ao navegador que você não quer prevenir o comportamento padrão do evento. O ".passive" é 
-  especialmente útil para otimizar desempenho em dispositivos móveis.
+  especialmente útil para otimizar desempenho em dispositivos móveis:
 
 	.passive
 
@@ -1029,3 +1028,148 @@ Ciclo de Vida (life cicle):
 
 Aula 13: ==================================================================================================
 
+Components Slots:
+
+  Serve para deixar nosso componente mais flexível ainda, exemplo se eu colocar a tag slot dentro de um 
+  componente, exemplo "TheHeader.vue":
+
+	<template>
+	  <slot />
+	</template>
+
+  Dentro do arquivo "App.vue" ao criar a tag do componente, poderemos modificá-lo conforme quisermos o 
+  arquivo "TheHeader.vue" através daquela tag, ou seja, injetar algo que irá manipular o componente, 
+  criando agora, ao invés de:
+
+	<TheHeader />
+
+  Agora teremos uma tag completa dentro de "App.vue":
+
+	<TheHeader>
+	  ...
+	</TheHeader>
+
+  Temos também o "named slot", ou seja, slots nomeados que facilita na manipulação do componente ainda 
+  mais. Exemplo:
+
+  Arquivo "TheHeader.vue":
+
+	<template>
+	    <!-- Conteúdo "Title" -->
+	    <h1 class="title">
+	      <slot name="title" />
+	    </h1>
+
+	    <!-- Conteúdo "Description" -->
+	    <div class="description">
+	      <slot name="description" />
+	    </div>
+
+	    <!-- Conteúdo "Default" -->
+	    <div class="content ">
+	      <slot />
+	    </div>
+	</template>
+
+
+  Arquivo "App.vue":
+
+	<TheHeader>
+	  <template v-slot:title>
+	    Title
+	  </template>
+
+	  <template v-slot:description>
+	    <h2>Description</h2>
+	  </template>
+
+	  Default Slot
+	</TheHeader>
+
+
+  "Slot" não nomeados se tornam "default".
+
+  E agora aprendemos mais um diretiva, a diretiva "v-slot" no qual manipula as "named slot".
+
+  Essa injeção de dados, ou manipulação, quando inspecionada na página do navegador, aparece tudo como se 
+  estivéssemos escrito o código no próprio "index" e não injetado através de outro arquivo.
+
+  Lembrando que na hora de chamar o "named slot" temos de setar a tag "template" com a diretiva "v-slot".
+
+  Já aprendemos que temos acesso ao elemento através do "mounted()", ou seja:
+
+	export default {
+	  mounted(){
+	    console.log( this.$el );
+	  }
+	}
+
+  Ou seja, acesso ao "$el". Lembrando apenas que esse componente é do "template" do componente e não do 
+  projeto inteiro, não. Ou seja, você conseguirá manipular somente esse bloco de informação dentro desse 
+  componente.
+
+  Agora também temos acesso ao:
+
+	export default {
+	  mounted(){
+	    console.log( this.$slots );
+	  }
+	}
+
+  Agora temos acesso ao "$slots" através do "mounted()". E como podemos utilizar isso?
+
+  Na prática, o arquivo "App.vue":
+
+	<TheHeader>
+	  // <template v-slot:title>
+	  //  Title
+	  // </template>
+
+	  <template v-slot:description>
+	    <h2>Description</h2>
+	  </template>
+
+	  Default Slot
+	</TheHeader>
+
+  Ou seja, comentei o "title" então ele está inexistente nesse caso, não aparecerá setado.
+
+  O arquivo "TheHeader.vue":
+
+	<template>
+	    <!-- Conteúdo "Title" -->
+	    <h1 v-if="$slots.title" class="title">
+	      <slot name="title" />
+	    </h1>
+
+	    <!-- Conteúdo "Description" -->
+	    <div class="description">
+	      <slot name="description" />
+	    </div>
+
+	    <!-- Conteúdo "Default" -->
+	    <div class="content ">
+	      <slot />
+	    </div>
+	</template>
+
+  Ou seja, adicionamos a diretiva "v-if" indicando aquele "$slots", sendo ele um objeto, dizendo que se 
+  for "true" poderá executar, caso for "false", como o é agora, sendo que comentamos o código lá no 
+  "App.vue", ele não reconhecerá o comando e ocultará no inspecionamento da página (dentro do navegador).
+
+  Apenas aparecerá de forma comentada na inspeção de página:
+
+	<!-- v-if --> == $0
+
+  Obsevação, deixei o "title" comentado só para ilustrar como se eu não tivesse declarado ele no arquivo, 
+  ou seja, como se ele não tivesse setado lá.
+
+  Isso tudo sobre "slot" é um recurso muito poderoso no "Vue.js" e iremos utilzar demais nos nossos 
+  projetos.
+
+
+Aula 14: ==================================================================================================
+
+Scoped e Global CSS:
+
+  
