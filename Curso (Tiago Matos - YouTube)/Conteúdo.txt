@@ -1172,4 +1172,80 @@ Aula 14: =======================================================================
 
 Scoped e Global CSS:
 
+  Na tag "script", dentro de "import" podemos utilizar o "@", que é chamado de "alias" para achar o 
+  caminho de determinado arquivo, exemplo:
+
+  Antigamente:
+
+	import BaseCard from '../../components/BaseCard.vue';	
+
+  Agora:
+
+	import BaseCard from '@/components/BaseCard.vue';
+
+  Ou seja, o Vue CLI facilita nossa vida apenas passando o "alias", é uma forma curta para dizermos que 
+  estamos dentro de "src", pasta do projeto "Vue.js", é um atalho.
+
+  Depende de qual esteja configurado, mas alguns desenvolvedores gostam de utilizar o "~".
+
+---------------------------------------------------------------------------------------------------
+
+  - CSS GLOBAL:
+
+  Para criarmos um "CSS Global", na pasta "assets" agora criaremos uma pasta chamada "css" e um arquivo 
+  dentro dela chamado "style.css". Esse é o arquivo de "CSS Global".
+
+  Para chamarmos esse "CSS Global", iremos em "main.js" e em "import":
+
+	import '@/assets/css/style.css';
+
+  O ponto negativo de utilizar essa forma de injetar CSS na página é que toda vez que carregar a aplicação 
+  esse arquivo de CSS irá carregar junto, então dessa maneira você pode estar injetando CSS na página sem 
+  ter necessidade.
+
+  - CSS LOCAL:
+
+  A forma de declarar o "CSS Local" é através do arquivo ".vue", como já vimos anterior, para exemplo 
+  criamos um arquivo novo chamado "BaseCard.vue":
+
+	<template>
+	  <div class="card">
+	    Lorem Ipsum dolor sit amet consectetur adipisicing elit.
+	  </div>
+	</template>
+
+	<style>
+	  .card{
+	    background-color: #000;
+	    color: #fff;
+	  }
+	</style>
+
+  Porém, se agora fôssemos para o arquivo "App.vue" e importássemos esse arquivo "BaseCard.vue" para lá, 
+  que tem uma classe no CSS chamada ".card", e lá no arquivo "App.vue" utilizássemos uma classe com esse 
+  mesmo nome em outro elemento criaria um conflito e essa mesma classe seria utilizada lá, sendo que no 
+  caso iremos querer classe de mesmo nome porém com instruções diferentes para cada arquivo. Ou seja, 
+  a classe ".card" do arquivo "BaseCard.vue" ficará digamos que como global.
+
+  E é aí que entra o "Scoped".
+
+  - CSS SCOPED:
+
+  É simples o modo de utilizar o "CSS Scoped", somente temos que ir no arquivo que criamos recentemente, 
+  exemplo que estamos utilizando é o "BaseCard.vue" e na tag "style" setar o "scoped":
+
+	<style scoped>
+	  ...
+	</style>
+
+  Assim, classe de mesmo nome no arquivo "App.vue" não criarão mais conflitos e cada uma terá as suas 
+  instruções específicas.
+
+  Ou seja, no momento é a melhor forma de declarar CSS que podemos utilizar. Prefira sempre utilizar 
+  dessa maneira a partir de agora em diante.
+
+Aula 15: ==================================================================================================
+
+Enviando Dados Para o Componente Filho (props):
+
   
