@@ -1248,4 +1248,243 @@ Aula 15: =======================================================================
 
 Enviando Dados Para o Componente Filho (props):
 
+  Vamos criar um componente de alerta para exemplificar: "BaseAlert.vue"
+
+  Para questão de boas práticas no "Vue.js" ao criar um componente novo, utilizasse "Base" como prefixo 
+  do nome do arquivo caso o arquivo seja um componente de visualização, ou seja, colocasse um prefixo 
+  para identificar mais facilmente caso o projeto acabe ficando grande e precise alterar algo, exemplo:
+
+	BaseAlert.vue
+	BaseCard.vue
+	BaseButton.vue
+
+---------------------------------------------------------------------------------------------------
+
+  Uma das formas de utilizarmos o "props":
+
+	<template>
+	  <div :class="['alert', {
+	    'alert-success': variant === 'success',
+	    'alert-danger': variant === 'danger'
+	  }]">
+	    Seu formulário foi enviado com sucesso!
+	  </div>
+	</template>
+
+
+
+
+	<script>
+	export default {
+	  props: ['variant']
+	}
+	</script>
+
+
+
+
+	<style scoped>
+	.alert {
+	  padding: 5px;
+	  border-radius: 6px;
+	  color: gray;
+	  background-color: #ddd;
+	}
+	
+	.alert-success {
+	  background-color: #42b983;
+	  color: #fff;
+	}
+	
+	.alert-danger {
+	  background-color: red;
+	  color: #fff;
+	}
+	</style>
+
+  Lembrando que esse é um novo componente que criamos chamado "BaseAlert.vue".
+
+  Ou seja, na tag "template", pegamos uma "div", chamamos "class" guiada por um "bind" adicionando um 
+  "array" com a classe "alert", "alert-success" e "alert-danger".
+
+  Na tag "script" criamos a "props" chamando ela de "variant".
+
+  Na tag "template" novamente, setamos como valor de "alert-success" e "alert-danger" com a "variant" e 
+  uma declaração condicional perguntando "se for igual a tal execute tal".
+
+  Na tag "style" estilizamos as classes.
+
+  Agora no arquivo "App.vue", importaremos esse componente "BaseAlert.vue", setando ele e chamando agora 
+  a "variant" desejável:
+
+	<div>
+	  <BaseAlert variant="danger" />
+	</div>
+
+  Se você tiver muitas "variant" o código dentro de "BaseAlert.vue" ficará muito poluído, então há uma 
+  forma de realizarmos a mesma tarefa de forma mais simples. 
+
+  Onde era:
+
+	<template>
+	  <div :class="['alert', {
+	    'alert-success': variant === 'success',
+	    'alert-danger': variant === 'danger'
+	  }]">
+	    Seu formulário foi enviado com sucesso!
+	  </div>
+	</template>
+
+  Agora ficará:
+
+	<div :class="`alert alert-${variant}`">
+	  Seu formulário foi enviado com sucesso!
+	</div>
+
+  Veja como o código ficou bem mais limpo e realizando de forma tão eficaz quanto anteriormente.
+
+  Aqui, continuamos utilizando o "bind" no "class", e como valor inserimos um "template string" com a 
+  classe "alert" e "alert-" obtendo essa última um valor flexível, ou seja, da "props", então 
+  "alert-${...}". O valor flexível da "props" como criamos anteriormente é a "variant".
+
+  Nessa forma o código ficará bem mais limpo, porém na hora de inspecionar o site, a classe como tem fixo 
+  "alert-", quando não existir valor para ela, ficará aparecendo "alert-undefined", ou seja, valor 
+  indefinido.
+
+  Para isso iremos fazer utilização do "computed".
+
+  Na tag "template" agora ficará assim:
+
+	<div :class="baseClass">
+	  Seu formulário foi enviado com sucesso!
+	</div>
+
+  Na tag "script" ficará assim:
+
+	<script>
+	export default {
+	  props: ['variant'],
+	  computed: {
+	    baseClass() {
+	      return [
+	        'alert',
+	        this.variant ? `alert-${this.variant}` : ``
+	      ]
+	    }
+	  }
+	}
+	</script>
+
+
+  Ou seja, no valor da classe que tinhamos aquela instrução toda, agora temos uma função vinda de 
+  "computed".
+
+  A função criada é "baseClass()", que retornará a mesma instrução que havia anteriormente só que antes 
+  estava setada dentro da classe. Ou seja:
+
+	:class="`alert alert-${variant}`"
+
+  Disso acima foi para:
+
+        this.variant ? `alert-${this.variant}` : ``
+
+  Claramente adaptada para função funcionar corretamente. Agora temos o código ainda mais limpo, indentado 
+  e feito sob boas práticas de codificação, sem contar que é uma forma bem mais inteligente de escrever 
+  o código.
+
+  Lembrando que fizemos a exemplificação aqui de apenas um "props", que colocamos o nome de "variant", 
+  mas caso precisarmos podemos criar diversas outras "props".
+
+---------------------------------------------------------------------------------------------------
+
+  Qual a diferença de "props" e "slot"?
+
+  "props" é mais para trabalharmos com o comportamento do componente e "slot" para trabalhar com o 
+  conteúdo.
+
+  Ou seja, "props" é o comportamento e "slot" o conteúdo. De uma maneira mais fácil de entender, "props", 
+  para se ter uma semântica melhor, utilizaremos como propriedades da tag, exemplo:
+
+	<div :class="props"></div>
+
+  Já o "slot" utilizaremos como valor empregado, ou conteúdo:
+
+	<div>
+	  slot
+	</div>
+
+  Pois utilizando assim teremos uma melhor semântica no código e muito mais proveito também.
+
+---------------------------------------------------------------------------------------------------
+
+  Só nessa aula já misturamos então:
+
+	props
+	computed
+	slot
+	bind
+	scoped
+
+---------------------------------------------------------------------------------------------------
+
+  Além dessa forma que vimos para declaração da "props" temos outra forma de declará-la também:
+
+  Declaração que fizemos anteriormente:
+
+	export default {
+	  props: ['variant', 'test']
+	}
+
+  Temos essa maneira de declarar também;
+
+	export default {
+	  props: {
+	    variant: {
+	      type: String,
+	      default: ''
+	    },
+	    test: {
+	      type: String,
+	      default: 'test'
+	    }
+	  }
+	}
+
+  Ou seja, nesse caso temos de declarar qual o tipo dela "type" e o valor padrão dela "default", que pode 
+  ser vazio também.
+
+  Os tipos podem ser "String", "Object", "Array", etc. 
+
+  Porém o "Vue.js" reclama que o valor "default" para o tipo "Object" deve ser uma função, teríamos de 
+  fazer da seguinte forma:
+
+	test: {
+	  type: Object,
+	  default: () => {
+	    return {}
+	  }
+	}
+
+  Ou seja, teríamos de criar uma "arrow function" para o valor "default" retornando o objeto.
+
+  Se for um Array basta mudarmos o retorno de objeto, no caso acima, para array, exemplo:
+
+	test: {
+	  type: Array,
+	  default: () => {
+	    return []
+	  }
+	}
+
+  Por fim, você escolhe a forma como quer tratar a "props" pode ser daquela primeira forma, utilizando do 
+  array para setar os valores, como foi nos exemplos lá no começo dessa aula, ou atráves de objeto, como o 
+  foi nesses últimos exemplos citados.
+
+  A diferença de um para outro é que na forma de declaração com o objeto a "props" fica bem mais 
+  detalhada não deixando dúvidas no nosso código.
+
+Aula 16: ==================================================================================================
+
+Enviando Dados do Filho Para o Pai (emit):
+
   
