@@ -1646,3 +1646,23 @@ Rota dinâmica:
 
 ---------------------------------------------------------------------------------------------------
 
+"Kebab Case" e "Pascal Case":
+
+  Caso não tenha percebido anterior, quando terminamos de instalar o "Vue Router" as rotas são setadas 
+  dessa seguinte forma:
+
+	<router-link to="/servicos">Serviços</router-link>
+
+  Me refiro na forma de setar a tag, é chamada de "Kebab Case". Existe uma melhor forma de fazer isso:
+
+  O <PascalCase/> é mais fácil de ler porque torna muito óbvio o que é um componente vue e o que é uma 
+  marcação HTML regular.
+
+  O <kebab-case/> é mais uniforme e bonito, mas é um pouco mais difícil ver rapidamente quais elementos 
+  são componentes vue e quais são HTML regular. 
+
+  Caso for iniciar um novo projeto sozinho, utilize <PascalCase/>, mas lembresse que usar o <kebab-case/> 
+  não é um problema.
+
+---------------------------------------------------------------------------------------------------
+
