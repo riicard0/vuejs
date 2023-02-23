@@ -1,0 +1,61 @@
+Vue vs React:
+
+  Vue é um framework flexível e leve baseado em JavaScript que oferece ferramentas web poderosas para o 
+  desenvolvimento de projetos web de vanguarda modernistas. O Vue também é considerado como um framework 
+  JavaScript flexível e evolutivo, pois permite que mudanças sejam feitas no código de um aplicativo sem 
+  afetar nenhuma característica fundamental, permitindo a criação de uma IU progressiva. A alta 
+  flexibilidade da Vue também fornece módulos e componentes visuais customizados para serem adicionados à 
+  funcionalidade do aplicativo web.
+
+  Evan You projetou a Vue depois de colaborar com o Google em vários projetos que usaram o AngularJS. Mais 
+  tarde, ele resumiu seu processo de pensamento da seguinte forma: “Eu percebi, e se eu pudesse 
+  simplesmente isolar a parte que eu gostava sobre Angular e desenvolver algo incrivelmente leve,” O 
+  primeiro compromisso do código fonte do projeto foi em julho de 2013, e Vue foi publicado em fevereiro 
+  do ano seguinte.
+
+  Aplicativos populares da Web construídas com Vue
+  Aqui está uma lista de aplicativos web populares construídas usando o Vue,
+
+	Gitlab
+	Grammarly
+	Behance
+	Laravel Spark
+	Adobe Portfolio
+	9gag
+	Nintendo
+	Font Awesome
+
+----------------------------------------------------------------------------------------
+
+  React é uma biblioteca JavaScript de código aberto que pode ser usada para criar aplicativos web com 
+  interfaces de usuário sofisticadas. React permite que os desenvolvedores construam componentes 
+  reutilizáveis sob medida, permitindo tempos de desenvolvimento mais rápidos. Além disso, sua capacidade 
+  de carregar uma página web rapidamente a torna, ainda mais, amigável aos mecanismos de busca. No geral, 
+  é uma excelente biblioteca que incentiva a criação tanto de aplicativos empresariais simples quanto 
+  avançados.
+
+  Em comparação com os frameworks de programação AngularJS e Vue, React é a mais antiga biblioteca 
+  JavaScript. Ela foi criada pelo Facebook em 2013 como uma ferramenta para criar uma interface dinâmica 
+  para vários sites. O virtual DOM, que é uma representação dos elementos DOM construídos com componentes 
+  React, é a base do React.
+
+  Aplicativos web populares construídas com React
+  Aqui está uma lista de aplicativos web populares construídas usando o React,
+
+	Facebook
+	Netflix
+	Twitter
+	PayPal
+	BBC News
+	Yahoo
+	Instagram
+	WhatsApp
+	Dropbox
+
+
+
+
+
+	TERMINAR DE LER:
+
+		https://kinsta.com/pt/blog/vue-vs-react/

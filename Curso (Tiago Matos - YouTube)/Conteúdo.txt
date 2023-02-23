@@ -1487,4 +1487,29 @@ Aula 16: =======================================================================
 
 Enviando Dados do Filho Para o Pai (emit):
 
+  O "$emit()" é a função que irá enviar o evento para o componente pai.
+
+	this.$emit( 'close' );
+
+---------------------------------------------------------------------------------------------------
+
+Sobre a hierarquia:
+
+  A hierarquia de pai para filho, e assim por diante, exemplo:
+
+	PAI > FILHO > NETO > ...
+
+  Sempre um tratando com o seguinte, ou anterior. Exemplo, o componente PAI vai tratar com o componente 
+  FILHO, assim como o componente FILHO pode tratar com o componente PAI também. Agora, o componente FILHO 
+  será pai do componente NETO, assim como o componente NETO será filho do componente FILHO. Ou seja, 
+  seguindo uma hierarquia familiar.
+
+  Para tratar de componente pai para filho utilizamos a "props".
+
+  Para tratar de componente filho para pai, utilizamos o "emit" (event).
+
+Aula 17: ==================================================================================================
+
+Introdução ao Vue Router:
+
   
