@@ -1512,4 +1512,137 @@ Aula 17: =======================================================================
 
 Introdução ao Vue Router:
 
-  
+  Documentação:
+
+	https://router.vuejs.org/guide/
+
+  Vue Router é o roteador oficial para Vue.js. Ele se integra profundamente com o núcleo do Vue.js para 
+  facilitar a criação de aplicativos de página única com o Vue.js.
+
+---------------------------------------------------------------------------------------------------
+
+Instalação:
+
+  Já que estamos com um projeto Vue.js 3 instalado via CLI, iremos instalar o Vue Router via CLI também.
+
+  Lembrando que quando já temos um projeto rodando, temos que fazer a instalação do Vue Router 
+  manualmente, e não sabendo fazer isso manualmente pode dar conflito.
+
+	vue add router
+
+	> Use history mode for router? no
+
+---------------------------------------------------------------------------------------------------
+
+History Mode:
+
+  O "history mode" é o modo de histórico do navegador, temos o "Hash Mode" ou o "HTML5 Mode", a diferença 
+  é que no "Hash Mode" temos a presença de um "#" na URL, enquanto na "HTML5 Mode" não, porém no "HTML5 
+  Mode" temos que configurar o servidor para a URL amigável.
+
+  Por padrão, quando instalamos o "Vue Router" por CLI, ele vem com o "Hash Mode".
+
+---------------------------------------------------------------------------------------------------
+
+Arquivos e pastas após instalação:
+
+  - Na pasta "Package.json", vemos que ele instalou o:
+
+	"vue-router": "^4.0.3"
+
+  E temos também:
+
+	"@vue/cli-plugin-router": "~5.0.0",
+
+  - Em "main.js" vemos que ele importou:
+
+	import router from './router'
+
+  Foi instanciado também:
+
+	window.app = createApp(App).use(router).mount('#app')
+
+  - Foi criada a pasta "router" com o arquivo "index.js", esse arquivo é onde fica as configurações do 
+  nosso roteador.
+
+  Dentro desse arquivo temos as "routes", que nada mais é do que as rotas, instanciada cada uma dentro de 
+  um objeto, exemplo:
+
+	{
+	  path: '/',
+	  name: 'home',
+	  component: HomeView
+	}
+
+  Dessa forma é carregado o componente já diretamente.
+
+  Além dessa forma exemplificada acima, existe uma outra forma de instanciar uma rota:
+
+	{
+	  path: '/about',
+	  name: 'about',
+	  component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+	}
+
+  Essa segunda forma é a mais indicada para se utilizar pois ela faz um processamento mais lento, ou seja, 
+  só irá carregar o componente quando você visitar ele, poupando assim memória, o chamada "lazy-loaded".
+
+  - Foi criada uma outra pasta chamada "views", com dois arquivos para exemplificar, "AboutView.vue" e 
+  HomeView.vue
+
+---------------------------------------------------------------------------------------------------
+
+Continuação:
+
+  Em "App.vue", foi setado dois "router-link" dentro da tag "template", referentes aos dois arquivos, 
+  "AboutView.vue" e "HomeView.vue", e para que funcionem é necessário utilizar:
+
+	<router-view/>
+
+  Para criar uma nova rota é a mesma coisa explicada anterior, siga os seguintes passos:
+
+  Dentro do arquivo "index.js", na pasta "router":
+
+	{
+	  path: '/servicos',
+	  name: 'Serviços',
+	  component: () => import('../views/ServicesView.vue')
+	}
+
+  Dentro de "App.vue" vamos adicionar o link:
+
+	<router-link to="/servicos">Serviços</router-link>
+
+---------------------------------------------------------------------------------------------------
+
+Rota dinâmica:
+
+  Podemos passar o link da rota dinamicamente:
+
+	<RouterLink :to="rotaDinamica">Serviços</RouterLink>
+
+  Acima, utilizamos o "bind" e uma variável dentro da tag "template" em "App.vue".
+
+  Na tag "script":
+
+	<script>
+	  export default {
+	    data() {
+	      return {
+	        rotaDinamica: 'servicos'
+	      }
+	    }
+	  }
+	
+	</script>
+
+  Lembrando que lá me "index.js" temos de ter a rota adicionada também:
+
+	{
+	  path: '/servicos',
+	  name: 'Serviços',
+	  component: () => import('../views/ServicesView.vue')
+	}
+
+---------------------------------------------------------------------------------------------------
+
