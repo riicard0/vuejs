@@ -1542,6 +1542,17 @@ History Mode:
 
   Por padrão, quando instalamos o "Vue Router" por CLI, ele vem com o "Hash Mode".
 
+  Para mudarmos isso, iremos na pasta "router" em "index.js" e mudaremos o:
+
+	createWebHashHistory
+
+  Para:
+
+	createWebHistory
+
+  Existe um dele no "import" e outro na "const" chamada "router" no final do arquivo. Assim a URL não 
+  apresentará mais a "#" conforme navegar entre as páginas.
+
 ---------------------------------------------------------------------------------------------------
 
 Arquivos e pastas após instalação:
@@ -1666,3 +1677,73 @@ Rota dinâmica:
 
 ---------------------------------------------------------------------------------------------------
 
+Capturar ID:
+
+  Primeiro criaremos a rota. Indo na pasta "router" em "index.js", criaremos o "path":
+
+	{
+	  path: '/usuarios/:id',
+	  name: 'usuarios-editar',
+	  component: () => import(../views/UserEditView.vue)
+	}
+
+  Obviamente agora criaremos um arquivo dentro da pasta "views" chamado "UserEditView.vue". Não precisamos 
+  criar muita coisa dentro desse arquivo, somente algo para exemplificar:
+
+	<template>
+	  <div>
+	    Usuário
+	  </div>
+	</template>
+
+  Agora, para conseguirmos acessar, iremos no arquivo pai "App.vue" e instaciaremos a rota:
+
+	<RouterLink to="/usuario/10">Usuário</RouterLink>
+
+---------------------------------------------------------------------------------------------------
+
+Objeto "route" e "router":
+
+  Quando temos acesso ao "Vue Router", temos acesso então ao:
+
+	<pre>
+	  {{ $route }}
+	</pre>
+
+  A tag "pre" no HTML é utilizada para representar texto pré-formatado. Aqui queremos mostrar o "$route".
+
+  Esse objeto "$route" nos traz muitas informações sobre a rota atual que é de grande valia pois podemos 
+  utilizá-las. Exemplo:
+
+	<div>
+	  {{ $route.params.id }}
+	</div>
+
+  Isso nos traria o ID do usuário atual. Outro exemplo:
+
+	<div>
+	  {{ $route.query.page }}
+	</div>
+
+  Isso nos traria a página atual em que o usuário atual está. E assim por diante.
+
+  Podemos utilizar esse objeto também dentro da tag "script":
+
+	<script>
+	  export default {
+	    created() {
+	      console.log( this.$route );
+	    }
+	  }
+	</script>
+
+  Existe também outro objeto que temos acesso, o "$router".
+
+  A diferença entre os dois é que o "$router" tem funcionalidades do esquema de roteamento e o "$route" 
+  tem traços da rota atual.
+
+Aula 19: ==================================================================================================
+
+VUEX (State):
+
+  

@@ -1122,4 +1122,123 @@ export default router
 
 Aula 18: ==================================================================================================
 
+						index.js
+
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  },
+  {
+    path: '/about',
+    name: 'about',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+  },
+  {
+    path: '/servicos',
+    name: 'Serviços',
+    component: () => import('../views/ServicesView.vue')
+  },
+  {
+    path: '/usuarios/:id',
+    name: 'usuarios-editar',
+    component: () => import('../views/UserEditView.vue')
+  }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+export default router
+
+
+						UserEditView.vue
+
+<template>
+  <div>
+    {{ $route.params.id }}
+
+    Usuário <br>
+
+    <button @click="login()">Login</button>
+  </div>
+</template>
+
+<script>
+export default {
+  created() {
+    // console.log(this.$route);
+    // console.log(this.$router);
+  },
+
+  methods: {
+    login() {
+      //ajax login
+      this.$router.push('/about');
+      console.log('CHEGOU');
+    }
+  }
+}
+</script>
+
+						App.vue
+
+<template>
+  <nav>
+    <RouterLink to="/">Home</RouterLink> |
+    <RouterLink to="/about">About</RouterLink> |
+    <RouterLink to="/usuarios/10">Usuário</RouterLink> |
+    <RouterLink :to="rotaDinamica">Serviços</RouterLink>
+  </nav>
+
+  <RouterView />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      rotaDinamica: 'servicos'
+    }
+  }
+}
+
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
+
+
+Aula 19: ==================================================================================================
+
 						arquivo.extensao
+
