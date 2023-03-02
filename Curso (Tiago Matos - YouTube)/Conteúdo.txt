@@ -1746,4 +1746,98 @@ Aula 19: =======================================================================
 
 VUEX (State):
 
-  
+  "Vuex" é a biblioteca oficial do "Vue.js" para gerenciamento de "estados".
+
+  Imagine que o "Vuex" é o banco de dados do Front-End, ou seja, pense que você tem um local reservado e 
+  todos os seus componentes tem acesso direto a esse seu banco de dados. Então é um local para colocarmos 
+  dados e termos acesso de qualquer lugar do meu sistema, de qualquer componente, podendo ter vários 
+  níveis de hierarquia (ser o arquivo pai, filho, neto, etc).
+
+  Documentação do "VUEX":
+
+	https://vuex.vuejs.org/
+
+---------------------------------------------------------------------------------------------------
+
+Instalação via CLI:
+
+  Faremos a instalação via CLI no terminal do VS Code:
+
+	vue add vuex
+
+  Caso apareça "Still proceed?" coloque "yes".
+
+---------------------------------------------------------------------------------------------------
+
+Pós-Instalação:
+
+  - Dentro do arquivo "package.json", dentro de "dependencies", aparecerá:
+
+	 "vuex": "^4.0.0"
+
+  E o plugin, dentro de "devDependencies":
+
+	"@vue/cli-plugin-vuex": "~5.0.0",
+
+  - Dentro do arquivo "main.js", ele importa e utiliza o plugin:
+
+	import store from './store'
+
+  Plugin:
+
+	window.app = createApp(App).use(store).use(router).mount('#app')
+
+  - E dentro da pasta "Store", no arquivo "index.js" é onde está a instância do "VUEX".
+
+  Lembrando que após a instalação do "VUEX" temos acesso ao objeto "$store".
+
+---------------------------------------------------------------------------------------------------
+
+Camadas VUEX:
+
+  Dentro desse arquivo é onde a mágica acontece, o "store" é dividido em camadas. As camadas são:
+
+	- State
+	- Getters
+	- Mutations
+	- Actions
+	- Modules
+
+  Como "modules" é muito avançado, não iremos estudá-lo por enquanto. Então, primeiro foque nessas quatro 
+  primeiras camadas e depois estude "modules".
+
+---------------------------------------------------------------------------------------------------
+
+Camada "state":
+
+  - "State" é literalmente o estado, é o nosso "storage". Ou seja, ao invés de colocarmos dados do usuário 
+  na tag "script" do componente, iremos colocar esses dados aqui no "State".
+
+  Lembrando que podemos ter vários outros estados dentro de "state", como por exemplo: "products", "cart", 
+  etc.
+
+	state: {
+	  user: {
+	    first_name: 'Jon',
+	    last_name: 'Snow',
+	    email: 'jon@snow.com'
+	  }
+	}
+
+  Para consumir os dados de "state" podemos acessá-lo pela tag "template" ou pela tag "script", na tag 
+  "script" ficará:
+
+	created() {
+	  console.log( this.$store.state.user );
+	}
+
+  Na tag "template":
+
+	Usuário: {{ $store.state.user.first_name }} {{ $store.state.user.last_name }}
+	E-mail: {{ $store.state.user.email }}
+
+---------------------------------------------------------------------------------------------------
+
+Camada "mutations":
+
+ 

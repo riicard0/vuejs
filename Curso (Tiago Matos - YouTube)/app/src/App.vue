@@ -15,6 +15,9 @@ export default {
     return {
       rotaDinamica: 'servicos'
     }
+  },
+  created() {
+    console.log(this.$store.state.user);
   }
 }
 
