@@ -1821,7 +1821,9 @@ Camada "state":
 	    first_name: 'Jon',
 	    last_name: 'Snow',
 	    email: 'jon@snow.com'
-	  }
+	  },
+	  products: [],
+	  cart: []
 	}
 
   Para consumir os dados de "state" podemos acessá-lo pela tag "template" ou pela tag "script", na tag 
@@ -1881,6 +1883,54 @@ Camada "mutations":
   chamamos como segundo parâmetro dentro da função "commit".
 
   Lembrando que o "created()" utilizamos no processo de criação ou de debug.
+
+---------------------------------------------------------------------------------------------------
+
+Continuação:
+
+  Dentro da pasta "store" no arquivo "index.js":
+
+  Na prática, utilizando agora o array "products" do "state", criaremos alguns produtos para exemplificar:
+
+	state: {
+	  user: { ... },
+	  products: [
+	    {
+	      id: 1,
+	      name: 'Bola',
+	      price: 100
+	    },
+	    {
+	      id: 2,
+	      name: 'Chuteira',
+	      price: 200
+	    },
+	    {
+	      id: 3,
+	      name: 'Meião',
+	      price: 50
+	    }
+	  ],
+	  cart: []
+	}
+
+  Agora criado os produtos no "state". Criaremos os componentes dos nossos produtos.
+
+  Dentro da pasta "components", para deixarmos mais organizado, crie uma nova pasta chamada "Products", e 
+  dois arquivos dentro dela. O primeiro arquivo será "AppProduct.vue" para aparecer nosso produto na 
+  página e o segundo arquivo será "AppProducts.vue", para aparecer todos os produtos na página.
+
+  E assim podemos criar nossos produtos.
+
+---------------------------------------------------------------------------------------------------
+
+Extensão Chrome:
+
+  Para um debug no próprio navegador, instale o plugin "Vue.js devtools":
+
+	https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd/related
+
+  Aqui podemos acompanhar tudo que está acontecendo na página, seus componentes e até mesmo o "VUEX".
 
 ---------------------------------------------------------------------------------------------------
 

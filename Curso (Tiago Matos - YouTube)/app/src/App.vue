@@ -7,16 +7,39 @@
 
     <br><br>
 
-    <button @click="updateUser()">
+    <!-- Produtos -->
+    <AppProducts />
+
+    <br><br>
+    <br><br>
+
+    <!-- Carrinho de Compras -->
+    <div>
+      <pre> Carrinho: {{ $store.state.cart.length }}</pre>
+    </div>
+
+    <br><br>
+    <br><br>
+
+    <!-- Atualizar Perfil de Usuário -->
+    <!-- <button @click="updateUser()">
       Atualizar perfil
-    </button>
+    </button> -->
   </nav>
 
   <RouterView />
 </template>
 
 <script>
+import AppProducts from '@/components/Products/AppProducts.vue';
+
 export default {
+  name: 'App',
+
+  components: {
+    AppProducts
+  },
+
   data() {
     return {
       rotaDinamica: 'servicos'

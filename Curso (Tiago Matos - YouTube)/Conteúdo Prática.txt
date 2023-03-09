@@ -1485,19 +1485,219 @@ export default createStore({
 
 Aula 21: ==================================================================================================
 
-						arquivo.extensao
+						index.js
+
+import { createStore } from 'vuex'
+
+export default createStore({
+  state: {
+    user: {
+      first_name: 'Jon',
+      last_name: 'Snow',
+      email: 'jon@snow.com'
+    },
+    products: [
+      {
+        id: 1,
+        name: 'Bola',
+        price: 100
+      },
+      {
+        id: 2,
+        name: 'Chuteira',
+        price: 200
+      },
+      {
+        id: 3,
+        name: 'Meião',
+        price: 50
+      }
+    ],
+    cart: []
+  },
+  getters: {
+  },
+  mutations: {
+    storeUser(state, data){
+      state.user = data;
+    },
+   
+    addProduct(state, data){
+      state.cart.push(data);
+    },
+
+    removeProduct( state, id ){
+      const idx = state.cart.findIndex(o => o.id === id);
+      state.cart.splice(idx, 1);
+    }
+  },
+  actions: {
+  },
+  modules: {
+  }
+})
 
 
+						App.vue
 
-						arquivo.extensao
+<template>
+  <nav>
+    <RouterLink to="/">Home</RouterLink> |
+    <RouterLink to="/about">About</RouterLink> |
+    <RouterLink to="/usuarios/10">Usuário</RouterLink> |
+    <RouterLink :to="rotaDinamica">Serviços</RouterLink>
+
+    <br><br>
+
+    <!-- Produtos -->
+    <AppProducts />
+
+    <br><br>
+    <br><br>
+
+    <!-- Carrinho de Compras -->
+    <div>
+      <pre> Carrinho: {{ $store.state.cart.length }}</pre>
+    </div>
+
+    <br><br>
+    <br><br>
+
+    <!-- Atualizar Perfil de Usuário -->
+    <!-- <button @click="updateUser()">
+      Atualizar perfil
+    </button> -->
+  </nav>
+
+  <RouterView />
+</template>
+
+<script>
+import AppProducts from '@/components/Products/AppProducts.vue';
+
+export default {
+  name: 'App',
+
+  components: {
+    AppProducts
+  },
+
+  data() {
+    return {
+      rotaDinamica: 'servicos'
+    }
+  },
+
+  methods: {
+    updateUser() {
+      const newUser = {
+        first_name: 'Tiago',
+        last_name: 'Matos',
+        email: 'tiago@matos.com'
+      }
+      this.$store.commit('storeUser', newUser);
+    }
+  }
+}
+
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
 
 
+						AppProducts.vue
 
-						arquivo.extensao
+<template>
+  <div>
+    <AppProduct v-for="product in $store.state.products" :key="product.id" :product="product" />
+  </div>
+</template>
+
+<script>
+import AppProduct from '@/components/Products/AppProduct.vue';
+
+export default {
+  name: 'App',
+
+  components: {
+    AppProduct
+  },
+
+  data() {
+    return {
+
+    }
+  }
+}
+</script>
+
+						AppProduct.vue
 
 
+<template>
+  <div class="card">
+    {{ product.name }} - R$ {{ product.price }},00
 
-Aula ??: ==================================================================================================
+    <br>
+
+    <button @click="addProduct()">
+      Adicionar
+    </button>
+
+    <button @click="removeProduct()">
+      Remover
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    product: Object
+  },
+
+  methods: {
+    addProduct() {
+      this.$store.commit('addProduct', this.product);
+    },
+
+    removeProduct() {
+      this.$store.commit('removeProduct', this.product.id);
+    }
+  }
+}
+</script>
+
+<style>
+.card {
+  background: bisque;
+  padding: 6px;
+  margin-bottom: 5px;
+}
+</style>
+
+Aula 22: ==================================================================================================
 
 						arquivo.extensao
 
