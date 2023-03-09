@@ -1840,4 +1840,50 @@ Camada "state":
 
 Camada "mutations":
 
- 
+  Dentro da pasta "store" no arquivo "index.js":
+
+  Com o "mutations" iremos mudar os dados do nosso "state", ou seja, toda vez que quisermos alterar os 
+  dados do "state" faremos através do "mutations".
+
+  Ele tem algumas funções, como "storeUser()" que salva o usuário. Essa função recebe sempre "state" como 
+  primeiro parâmetro.
+
+	storeUser( state ) { ... }
+
+  Como segundo parâmetro ele utiliza o "data", que nada mais é do que a nossa mudança dentro de 
+  "mutations".
+
+	storeUser( state, data ) {
+	  state.user = data;
+	}
+
+  No arquivo "App.vue":
+
+  No objeto "$store" temos a função "commit" para comitar as nossas alterações, e esse "commit" irá 
+  disparar determinada função que você queira dentro de "mutations".
+
+	created() {
+	  this.$store.commit( 'storeUser' );
+	}
+
+  O segundo parâmetro dessa função "commit" é exatamente os dados que você queira passar para a "mutation".
+
+	created() {
+	  const newUser = {
+	    first_name: 'Tiago',
+	    last_name: 'Matos',
+	    email: 'tiago@matos.com'
+	  }
+	  this.$store.commit( 'storeUser', newUser );
+	}
+
+  Para facilitar e até deixar o código mais limpo, colocamos as informações dentro de uma variável e a 
+  chamamos como segundo parâmetro dentro da função "commit".
+
+  Lembrando que o "created()" utilizamos no processo de criação ou de debug.
+
+---------------------------------------------------------------------------------------------------
+
+Continuação:
+
+  

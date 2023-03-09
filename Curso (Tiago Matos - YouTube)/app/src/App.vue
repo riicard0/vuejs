@@ -4,6 +4,12 @@
     <RouterLink to="/about">About</RouterLink> |
     <RouterLink to="/usuarios/10">Usuário</RouterLink> |
     <RouterLink :to="rotaDinamica">Serviços</RouterLink>
+
+    <br><br>
+
+    <button @click="updateUser()">
+      Atualizar perfil
+    </button>
   </nav>
 
   <RouterView />
@@ -16,8 +22,16 @@ export default {
       rotaDinamica: 'servicos'
     }
   },
-  created() {
-    console.log(this.$store.state.user);
+
+  methods: {
+    updateUser() {
+      const newUser = {
+        first_name: 'Tiago',
+        last_name: 'Matos',
+        email: 'tiago@matos.com'
+      }
+      this.$store.commit('storeUser', newUser);
+    }
   }
 }
 
