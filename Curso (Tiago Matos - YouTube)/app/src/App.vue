@@ -22,10 +22,15 @@
     <br><br>
     <br><br>
 
+    User: "{{ $store.state.user.first_name }} {{ $store.state.user.last_name }}"
+
+    <br><br>
+    <br><br>
+
     <!-- Atualizar Perfil de Usuário -->
-    <!-- <button @click="updateUser()">
+    <button @click="updateUser()">
       Atualizar perfil
-    </button> -->
+    </button>
   </nav>
 
   <RouterView />
@@ -54,7 +59,11 @@ export default {
         last_name: 'Matos',
         email: 'tiago@matos.com'
       }
-      this.$store.commit('storeUser', newUser);
+      //this.$store.commit('storeUser', newUser);
+
+      this.$store.dispatch('storeUser', newUser).then(() => {
+        console.log('Terminou com sucesso!');
+      });
     }
   }
 }

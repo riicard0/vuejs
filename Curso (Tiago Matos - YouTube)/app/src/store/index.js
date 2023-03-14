@@ -48,6 +48,14 @@ export default createStore({
     }
   },
   actions: {
+    storeUser( { commit }, data  ){
+      return new Promise( ( resolve ) => {
+        setTimeout( () => {
+          resolve()
+            commit( 'storeUser', data );
+        }, 3000 )
+      } )
+    }
   },
   modules: {
   }

@@ -1962,4 +1962,64 @@ Camada "getters":
 
 Camada "actions":
 
+  O "mutations" e o "actions" são muito parecidos, porém lembre que o "mutations" serve para alterarmos o 
+  "state" (e só poderá ser alterado por aqui, pois se algo acontecer de errado, saberá que é dentro de 
+  "mutations").
+
+  O fluxo que o VUEX sempre recomenda é você chamar a "actions", a "actions" chamar a "mutations" e a 
+  "mutations" salvar no "state", porém isso não é necessário fazer caso não queira.
+
+  A principal diferença que, aí sim, você tem que colocar na ponta do lápis quando for utilizá-los é que 
+  a "mutations" é síncrona e a "actions" é assíncrona, ou seja, a "actions" consegue realizar mais de uma 
+  tarefa ao mesmo tempo enquanto a "mutations" começa executar uma e só executa próxima quando está acabar.
+
+  Na pasta "store" no arquivo "index.js":
+
+	storeUser( context, data ){
+	  console.log( context, data );
+	}
+
+  No arquivo "App.vue", dentro de "methods":
+
+	this.$store.dispatch( 'storeUser', newUser );
+
+  O "dispatch" irá acionar as "actions".
+
+  Outro exemplo:
+
+  Começando pelo arquivo "index.js" (pasta "store"):
+
+	actions: {
+	  storeUser( { commit }, data ){
+	    return new Promise( ( resolve ) => {
+	      setTimeout( () => {
+	        resolve()
+		  commit( 'storeUser', data );
+	      }, 3000 )
+	    } )
+	  }
+	}
+
+  No arquivo "App.vue", dentro de "methods":
+
+	this.$store.dispatch( 'storeUser', newUser ).then( () => {
+	  console.log( 'Terminou com sucesso!' );
+	} );
+
+---------------------------------------------------------------------------------------------------
+
+Resumão:
+
+  "state" você nunca salva diretamente, é somente para leitura.
+
+  "mutations" é utilizado o "commit" para disparar as funções.
+
+  "getters" é como se fosse a "computed".
+
+  "actions" é para performarmos uma promessa dentro do "VUEX".
+
+Aula 24: ==================================================================================================
+
+Composition API setup:
+
   
