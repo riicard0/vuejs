@@ -1934,6 +1934,32 @@ Extensão Chrome:
 
 ---------------------------------------------------------------------------------------------------
 
-Continuação:
+Camada "getters":
+
+  O "getters" é praticamente a "computed" do "VUEX". Dentro dele podemos ter quantas funções quisermos.
+
+  Ou seja, ele terá uma dependência e retornará um valor, no exemplo abaixo a dependência será "cart" do 
+  "state", alterando um valor ali, o valor será recomputado. Exemplo:
+
+  Dentro da pasta "store", no arquivo "index.js":
+
+	getters: {
+	  total( state ){
+	    return state.cart.reduce( ( total, item ) => total += item.price, 0 );
+	  }
+	}
+
+  Ele recebe "state" como parâmetro.
+
+  No arquivo "App.vue":
+
+	R${{ $store.getters.total }},00
+
+  Basicamente, no nosso exemplo, isso mostrará a soma total que o carrinho de compras obteve ao selecionar 
+  determinados itens.
+
+---------------------------------------------------------------------------------------------------
+
+Camada "actions":
 
   

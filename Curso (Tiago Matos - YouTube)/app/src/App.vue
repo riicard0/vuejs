@@ -16,6 +16,7 @@
     <!-- Carrinho de Compras -->
     <div>
       <pre> Carrinho: {{ $store.state.cart.length }}</pre>
+      R${{ $store.getters.total }},00
     </div>
 
     <br><br>

@@ -27,6 +27,11 @@ export default createStore({
     cart: []
   },
   getters: {
+    total(state) {
+      //dependencia
+      //retornar um valor
+      return state.cart.reduce((total, item) => total += item.price, 0);
+    },
   },
   mutations: {
     storeUser(state, data){
