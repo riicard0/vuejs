@@ -50,6 +50,40 @@ Intro:
   vários arquivos para estilização ou script.
 
 ---------------------------------------------------------------------------------------------------
+Formatação de Nomes:
+
+  - Nomes de componentes:
+
+	TheHeader.vue
+	HelloWorld.vue
+	AppProducts.vue
+
+  Ou seja, cada primeira letra de uma nova palavra em maiúsculo para diferenciar.
+
+  - Nomes de variáveis:
+
+	alertMain
+	questionTwo
+	perguntaTresResposta
+
+  Ou seja, a primeira palavra sempre com a primeira letra minúscula, e as palavras seguintes sempre com a 
+  primeira letra maiúsculas.
+
+  - Nome das propriedades do objeto:
+
+	first_name
+	last_name
+
+  Ou seja, todas as letras minúsculas, porém com as palavras separadas com um "underline", lembrando que é 
+  o nome das propriedades do objeto, já o nome do objeto em si, obtém as mesmas regras dos nomes para 
+  variáveis.
+
+  É importante uma organização e uma memorização desses padrões anteriormente, pois já vai acostumando 
+  desde cedo com esses padrões e retém uma boa prática, além de quando você for criar algo já saber qual 
+  irá utilizar e em que casos serão utilizados.
+
+
+---------------------------------------------------------------------------------------------------
 
 Diretivas:
 
@@ -177,8 +211,8 @@ Começo de tudo:
 
 	vue create app
 
-  O nome "app" quem cria é você. Escolha a opção do "Default ([Vue 3] babel, eslint)", ou seja, o Vue 3. 
-  O próprio terminal te indicará os comandos, então:
+  O nome da aplicação é por sua conta, no caso utilizei "app". Escolha a opção do "Default ([Vue 3] babel, 
+  eslint)", ou seja, o Vue 3. O próprio terminal te indicará os comandos, então:
 
 	cd app
 
@@ -343,7 +377,7 @@ Declarações condicionais (diretiva v-if v-show):
 	aplicação, porém a tag ainda continua a aparecer.
 
 	- Caso você queira que essa tag suma por questões de segurança, temos de utilizar o "v-if", pois 
-	quando a tag é tida como "false", ou o "v-else-if" ou "v-else", é utilizado aquele "v-if" some 
+	quando a tag é tida como "false", ou o "v-else-if" ou "v-else" é utilizado, aquele "v-if" some 
 	completamente do código fonte da aplicação.
 
   Outro exemplo:
@@ -555,7 +589,7 @@ Atributos Dinâmicos com data binding (diretiva v-bind):
   de dados, ou seja, dinamicamente.
 
   Existe uma forma de declarar o "v-bind" que acaba por deixar o código mais limpo, que é somente 
-  declarando o ":". Olha a dirença do exemplo anterior para agora:
+  declarando o ":". Olha a diferença do exemplo anterior para agora:
 
   Exemplo anterior:
 
@@ -848,9 +882,11 @@ Propriedade Computada (computed):
 	<script>
 	export default {
 	  name: 'App',
+
 	  components: {
 	
 	  },
+
 	  data() {
 	    return {
 	      user: {
@@ -859,11 +895,13 @@ Propriedade Computada (computed):
 	      }
 	    }
 	  },
+
 	  computed: {
 	    fullName() {
 	      return `${this.user.first_name} ${this.user.last_name}`
 	    }
 	  },
+
 	  methods: {
 	
 	  }
@@ -963,7 +1001,7 @@ Observadores (watch):
   Aqui no caso, temos o "watch" observando a variável "user" e suas propriedades, através da função 
   "handler" que dirá que quando tal variável se alterar execute tal instrução, ou seja, no nosso caso, 
   quando "user" se alterar execute o "console.log" e o "deep" com valor "true" diz que quando qualquer 
-  coisa dentro da variável "user" se alterar, dispare a função, ou seja, uma observação aprodundada, quer 
+  coisa dentro da variável "user" se alterar, dispare a função, ou seja, uma observação aprofundada, quer 
   dizer que agora ele está observando profundamente, não somente na parte rasa.
 
   Lembrando que o watch chamado tem que ser o mesmo nome da variável que quiser observar.
@@ -1971,7 +2009,8 @@ Camada "actions":
 
   A principal diferença que, aí sim, você tem que colocar na ponta do lápis quando for utilizá-los é que 
   a "mutations" é síncrona e a "actions" é assíncrona, ou seja, a "actions" consegue realizar mais de uma 
-  tarefa ao mesmo tempo enquanto a "mutations" começa executar uma e só executa próxima quando está acabar.
+  tarefa ao mesmo tempo enquanto a "mutations" começa executar uma e só executa a próxima quando esta 
+  acabar.
 
   Na pasta "store" no arquivo "index.js":
 
@@ -2016,7 +2055,7 @@ Resumão:
 
   "getters" é como se fosse a "computed".
 
-  "actions" é para performarmos uma promessa dentro do "VUEX".
+  "actions" é para performarmos uma promessa dentro do "VUEX", é utilizado o "dispatch" para acionar.
 
 Aula 24: ==================================================================================================
 
