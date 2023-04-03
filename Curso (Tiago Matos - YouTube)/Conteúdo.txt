@@ -2061,4 +2061,141 @@ Aula 24: =======================================================================
 
 Composition API setup:
 
+  "Composition API" nada mais é do que uma outra forma de criamos componentes. 
+
+  Até o momento utilizamos "Options API" pois passamos de fato opções, ou seja, tudo aquilo que vimos 
+  que vai dentro de "export default":
+
+	name
+	components
+	data
+	Hooks
+	Methods
+	Computed
+	
+  Entre vários outros que vimos até o momento.
+
+  Com a chegada da Composition API não há porquê utilizarmos os "Mixins". Ele ainda estará disponível, 
+  mas não será necessário. Os "Mixins" tem uma série de desvantagens comparado ao "Composition API", 
+  vai funcionar se bem programado, mas quando entra em larga escala de métodos, funções, etc, você acaba 
+  perdendo controle dos dados e até para debugar será uma batalha.
+
+  Agora falando diretamente sobre o "Composition API":
+
+  O "Composition API" nada mais é do que o próprio objeto que já utilizamos "export default", porém com 
+  a substituição de algumas estratégias, por exemplo, o não iremos mais utilizar o "beforeCreate()" ou o
+  "created()", que é a fase de criação, pois será utilizado agora o "setup()" que irá fazer exatamente o 
+  que o nome propõe, a fase de setup do nosso componente, então isso substitui a fase de criação do nosso 
+  componente.
+
+  Também não utilizaremos o "data()" mais, pois tudo que a gente retornar na "Composition API" estará 
+  disponível no template. Exemplo:
+
+	export default {
+	  name: 'App',
+
+	  components: {
+	  },
+
+	  setup() {
+	    const name = 'Tiago';
+
+	    return {
+	      name
+	    }
+	  }
+	}
+
+  Lembrando que, no "Options API", tudo que a gente seta dentro de "data()" se torna reativo. Porém no 
+  "Composition API" não é assim, por exemplo no código acima a variável "name" não é reativa, ela é 
+  estática, para ser reativa temos de transformá-la em reativa.
+
+  Em "Composition API", o "setup()" também irá substituir os "methods" do "Options API", pois os 
+  "methods" dentro de "Composition API" se trasformam em funções, exemplo:
+
+	setup() {
+
+	  const changeName = () => {
+	    ...
+	  }
+
+	}
+
+  Acima fizemos a exemplificação com uma "arrow function".
+
+  Sempre que quiser que a variável, função ou o que seja, fique disponível no "template" terá de 
+  retorná-la em "return" dentro de "setup()" do "Composition API".
+
+  Ao não ter a reatividade como padrão, como o era em "Options API", conseguimos ter um maior controle 
+  sobre o projeto com "Composition API" também.
+
+---------------------------------------------------------------------------------------------------
+Composition API Reatividade:
+
+  Para ter uma noção ainda maior, leia direto da documentação sobre reatividade:
+
+	https://vuejs.org/guide/essentials/reactivity-fundamentals.html
+
+  Para utilizarmos a reatividade, o "Composition API" utiliza de uma função chamada "reactive", também 
+  teremos de adicionar um "import" para que funcione. Exemplo:
+
+	import { reactive } from 'vue';
+
+	export default {
+	  name: 'App',
+	  components: {},
+
+	  setup() {
+
+	    const user = reactive ({
+	      ...
+	    })
+
+	    return {
+	      user
+	    }
+
+  	  }
+	}
+
+  Iremos encontrar também o "ref()", a diferença dele para o "reactive()" é que o "reactive()" possui 
+  algumas limitações, pois só funciona para alguns tipos primitivos como objetos, arrays e outros como 
+  "map", "set"... Já o "ref()" veio para solucionar isso, porém os dois tem a mesma função de deixar a 
+  nossa variável reativa. E o "ref()" utiliza o "reactive()" por debaixo dos panos também.
+
+  Então, a partir disso, é aconselhável utilizar sempre o "ref()" para reatividade em "Composition API".
+
+  Para utilizarmos o "ref()" basta:
+
+	import { ref } from 'vue';
+
+	export default {
+	  setop() {
+	    const admin = ref({
+	      ...
+	    })
+
+	    return {
+	      admin
+	    }
+	  }
+	}
+
+  Lembre-se que quando utilizamos "ref()" o "Vue.js" encapsula o objeto do "ref()" dentro de ".value", 
+  ou seja, sempre que quisermos acessar qualquer propriedade dentro de "ref()" de dentro de um método 
+  por exemplo, terá que utilizar desse modo:
+
+	const changeName = () => {
+	  admin.value.first_name = '...';
+	}
+
+  Agora quando for dentro de "template" não é necessário, o "Vue.js" nos poupa de termos esse trabalho.
+
+  A razão, como já foi dito, de não utilizarmos o "reactive()" é por causa de não conseguir utilizar 
+  outros tipos primitivos, como "number" e "string", nos atrasando assim. Como o "ref()" faz tudo que o 
+  "reactive()" faz e ainda não possui seus defeitos, vamos utilizar somente "ref()".
+
+---------------------------------------------------------------------------------------------------
+Composition API Computed e Watch:
+
   

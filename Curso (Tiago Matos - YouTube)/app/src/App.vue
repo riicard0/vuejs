@@ -1,69 +1,36 @@
 <template>
-  <nav>
-    <RouterLink to="/">Home</RouterLink> |
-    <RouterLink to="/about">About</RouterLink> |
-    <RouterLink to="/usuarios/10">Usuário</RouterLink> |
-    <RouterLink :to="rotaDinamica">Serviços</RouterLink>
+  <div>
+    User: {{ user.first_name }} {{ user.last_name }}
 
     <br><br>
 
-    <!-- Produtos -->
-    <AppProducts />
-
-    <br><br>
-    <br><br>
-
-    <!-- Carrinho de Compras -->
-    <div>
-      <pre> Carrinho: {{ $store.state.cart.length }}</pre>
-      R${{ $store.getters.total }},00
-    </div>
-
-    <br><br>
-    <br><br>
-
-    User: "{{ $store.state.user.first_name }} {{ $store.state.user.last_name }}"
-
-    <br><br>
-    <br><br>
-
-    <!-- Atualizar Perfil de Usuário -->
-    <button @click="updateUser()">
-      Atualizar perfil
-    </button>
-  </nav>
-
-  <RouterView />
+    Root: {{ admin.first_name }} {{ admin.last_name }}
+  </div>
 </template>
 
 <script>
-import AppProducts from '@/components/Products/AppProducts.vue';
+import { ref, reactive } from 'vue';
 
 export default {
   name: 'App',
 
   components: {
-    AppProducts
   },
 
-  data() {
+  setup() {
+    const user = reactive({
+      first_name: 'Jon',
+      last_name: 'Snow'
+    })
+
+    const admin = ref({
+      first_name: 'Admin',
+      last_name: 'Master'
+    })
+
     return {
-      rotaDinamica: 'servicos'
-    }
-  },
-
-  methods: {
-    updateUser() {
-      const newUser = {
-        first_name: 'Tiago',
-        last_name: 'Matos',
-        email: 'tiago@matos.com'
-      }
-      //this.$store.commit('storeUser', newUser);
-
-      this.$store.dispatch('storeUser', newUser).then(() => {
-        console.log('Terminou com sucesso!');
-      });
+      user,
+      admin
     }
   }
 }
