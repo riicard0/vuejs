@@ -1,15 +1,25 @@
 <template>
   <div>
-    User: {{ user.first_name }} {{ user.last_name }}
 
     <br><br>
 
-    Root: {{ admin.first_name }} {{ admin.last_name }}
+    <h6>User:</h6>
+    {{ user.first_name }}
+
+    <br><br>
+
+    <h6>Full name:</h6>
+    {{ fullName }}
+
+    <br><br>
+
+    <button @click="user.first_name = 'Sansa'">Atualizar</button>
+
   </div>
 </template>
 
 <script>
-import { ref, reactive } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 export default {
   name: 'App',
@@ -18,19 +28,22 @@ export default {
   },
 
   setup() {
-    const user = reactive({
+    const user = ref({
       first_name: 'Jon',
       last_name: 'Snow'
     })
 
-    const admin = ref({
-      first_name: 'Admin',
-      last_name: 'Master'
+    const fullName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
+
+    watch(user, () => {
+      console.log('Lógica cabulosa');
+    }, {
+      deep: true
     })
 
     return {
       user,
-      admin
+      fullName
     }
   }
 }

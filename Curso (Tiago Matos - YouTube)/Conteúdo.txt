@@ -2129,6 +2129,8 @@ Composition API setup:
   Ao não ter a reatividade como padrão, como o era em "Options API", conseguimos ter um maior controle 
   sobre o projeto com "Composition API" também.
 
+  Lembre-se, não se usa "Options API" e "Composition API" juntas, ou uma ou outra.
+
 ---------------------------------------------------------------------------------------------------
 Composition API Reatividade:
 
@@ -2197,5 +2199,84 @@ Composition API Reatividade:
 
 ---------------------------------------------------------------------------------------------------
 Composition API Computed e Watch:
+
+  Já que sabemos como funcionam "computed" e "watch" será mais simples a demonstração deles dentro do 
+  "Composition API". Começando com o "computed":
+
+	import { ref, computed } from 'vue';
+
+	export default {
+	  name: 'App',
+
+	  components: {
+	  },
+	
+	  setup() {
+	    const user = ref({
+	      first_name: 'Jon',
+	      last_name: 'Snow'
+	    })
+	
+	    const fullName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
+	
+	    return {
+	      user,
+	      fullName
+	    }
+	  }
+	}
+
+
+  Chamamos o "computed" no "import", criamos a função com o "computed" e a chamamos no "return" do 
+  "setup". Observação que fizemos uma "arrow function" mais simplificada ainda, já que só utilizou uma 
+  única linha (somente tiramos as "{}" e o "return").
+
+  Agora com o "watch":
+
+	import { ref, computed, watch } from 'vue';
+
+	export default {
+	  name: 'App',
+	
+	  components: {
+	  },
+	
+	  setup() {
+	    const user = ref({
+	      first_name: 'Jon',
+	      last_name: 'Snow'
+	    })
+	
+	    const fullName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
+	
+	    watch(user, () => {
+	      console.log('Lógica cabulosa');
+	    }, {
+	      deep: true
+	    })
+	
+	    return {
+	      user,
+	      fullName
+	    }
+	  }
+	}
+
+  Veja que em "watch" não precisamos criar uma função como com "computed" e também não precisamos chamá-lo 
+  no "return" já que ele está somente observando para quando houver alterações. Lembrando que também 
+  chamamos "watch" lá no "import".
+
+  No caso de observar um objeto inteiro é preciso utilizar o "deep: true" dentro do "watch". Agora se 
+  quiséssemos observar somente uma propriedade do objeto, basta:
+
+	    watch( () => user.value.first_name, () => {
+	      console.log('Lógica cabulosa');
+	    })
+
+  Ou seja, tivemos de transformar o primeiro parâmetro de "watch" numa função de "CallBack", o segundo 
+  parâmetro continua sendo a mesma coisa.
+
+---------------------------------------------------------------------------------------------------
+Composition API Ciclo de Vida:
 
   
