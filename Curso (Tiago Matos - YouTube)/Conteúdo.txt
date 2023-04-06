@@ -2279,4 +2279,57 @@ Composition API Computed e Watch:
 ---------------------------------------------------------------------------------------------------
 Composition API Ciclo de Vida:
 
+  Lembrando quais são os "Hook"s do Ciclo de Vida do "Vue.js":
+
+	beforeCreate()
+	created()
+	beforeMount()
+	mounted()
+	beforeUnmount()
+	mounted()
+
+  O "setup()" por si só já faz parte da criação do Ciclo de Vida, então "beforeCreate()" e "created()" já 
+  estão descartados pois já é padrão dentro do "setup()" da "Composition API".
+
+  Já os outros precisaremos importar eles quando formos utilizá-los.
+
+	import { onBeforeMount, onMounted, onBeforeUnmount, onUnmounted	} from 'vue';
+
+	export default {
+	  setup() {
+	    onBeforeMount( () => {
+	      ...
+	    } )
+
+	    onMounted( () => {
+	      ...
+	    } )
+
+	    onBeforeUnmount( () => {
+	      ...
+	    } )
+
+	    onMounted( () => {
+	      ...
+	    } )
+	  }
+	}
+
+  Então importamos o que era "beforeMount()" no "Options API", que dentro da "Composition API" se tornou 
+  "onBeforeMount". Dentro de "setup()" chamamos "onBeforeMount()", dentro dele uma "arrow function" e 
+  dentro da "arrow function" temos podemos utilizá-lo normalmente.
+
+  Para utilizar os outros é o mesmo procedimento.
+
+  Lembrando que a fase de desmontagem, ou seja "onBeforeUnmount" e "onUnmounted", é a fase ideal para 
+  você destruir tudo que tiver de destruir do componente, por exemplo bibliotecas de terceiros que você 
+  injetou, etc. Tudo para evitar "Memory Leak", que são "vazamentos de memória". 
+
+  Para saber mais sobre "Memory Leak" acesse a documentação:
+
+	https://br.vuejs.org/v2/cookbook/avoiding-memory-leaks.html
+
+---------------------------------------------------------------------------------------------------
+Composition API Props e Emit:
+
   

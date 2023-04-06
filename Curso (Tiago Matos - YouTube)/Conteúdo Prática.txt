@@ -2161,131 +2161,133 @@ nav a.router-link-exact-active {
 
 Aula 27: ==================================================================================================
 
-						arquivo.extensao
+						App.vue
 
+<template>
+  <div>
+    <br><br>
 
+    <AppHook v-if="showAppHook" />
 
-						arquivo.extensao
+    <button @click="showAppHook = !showAppHook">
+      Toggle
+    </button>
 
+    <h6>User:</h6>
+    {{ user.first_name }}
 
+    <br><br>
 
-						arquivo.extensao
+    <h6>Full name:</h6>
+    {{ fullName }}
 
+    <br><br>
+
+    <button @click="user.first_name = 'Sansa'">Atualizar</button>
+
+  </div>
+</template>
 
+<script>
+import { ref, computed, watch } from 'vue';
+import AppHook from '@/components/AppHook.vue'
 
-Aula ??: ==================================================================================================
+export default {
+  name: 'App',
 
-						arquivo.extensao
+  components: {
+    AppHook
+  },
 
+  setup() {
+    const user = ref({
+      first_name: 'Jon',
+      last_name: 'Snow'
+    })
 
+    const showAppHook = ref(true)
 
-						arquivo.extensao
+    const fullName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
 
+    watch(user, () => {
+      console.log('Lógica cabulosa');
+    }, {
+      deep: true
+    })
 
+    return {
+      user,
+      fullName,
+      showAppHook
+    }
+  }
+}
 
-						arquivo.extensao
+</script>
 
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
+nav {
+  padding: 30px;
+}
 
-Aula ??: ==================================================================================================
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
 
-						arquivo.extensao
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
 
 
+						AppHook.vue
 
-						arquivo.extensao
+<template>
+  <div>
+    Hook
+  </div>
+</template>
 
-
-
-						arquivo.extensao
-
-
-
-Aula ??: ==================================================================================================
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-Aula ??: ==================================================================================================
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-Aula ??: ==================================================================================================
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-Aula ??: ==================================================================================================
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-Aula ??: ==================================================================================================
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-Aula ??: ==================================================================================================
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-						arquivo.extensao
-
-
-
-Aula ??: ==================================================================================================
+<script>
+import {
+  onBeforeMount,
+  onMounted,
+  onBeforeUnmount,
+  onUnmounted
+} from 'vue';
+
+export default {
+  setup() {
+    onBeforeMount(() => {
+      console.log('onBeforeMount');
+    })
+
+    onMounted(() => {
+      console.log('onMounted');
+    })
+
+    onBeforeUnmount(() => {
+      console.log('onBeforeUnmount');
+    })
+
+    onUnmounted(() => {
+      console.log('onUnmounted');
+    })
+  }
+}
+
+</script>
+
+Aula 28: ==================================================================================================
 
 						arquivo.extensao
 

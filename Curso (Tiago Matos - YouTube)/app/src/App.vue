@@ -1,7 +1,12 @@
 <template>
   <div>
-
     <br><br>
+
+    <AppHook v-if="showAppHook" />
+
+    <button @click="showAppHook = !showAppHook">
+      Toggle
+    </button>
 
     <h6>User:</h6>
     {{ user.first_name }}
@@ -20,11 +25,13 @@
 
 <script>
 import { ref, computed, watch } from 'vue';
+import AppHook from '@/components/AppHook.vue'
 
 export default {
   name: 'App',
 
   components: {
+    AppHook
   },
 
   setup() {
@@ -32,6 +39,8 @@ export default {
       first_name: 'Jon',
       last_name: 'Snow'
     })
+
+    const showAppHook = ref(true)
 
     const fullName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
 
@@ -43,7 +52,8 @@ export default {
 
     return {
       user,
-      fullName
+      fullName,
+      showAppHook
     }
   }
 }
