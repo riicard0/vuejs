@@ -2289,15 +2289,103 @@ export default {
 
 Aula 28: ==================================================================================================
 
-						arquivo.extensao
+						App.vue
+
+<template>
+  <div>
+    <br><br>
+
+    <AppButton data-vue="Jon" @update="getUpdate" variant="danger">
+
+      Save
+
+      <template #icon>Icon</template>
+    </AppButton>
+
+  </div>
+</template>
+
+<script>
+import AppButton from '@/components/AppButton.vue'
+
+export default {
+  name: 'App',
+
+  components: {
+    AppButton
+  },
+
+  setup() {
+    const getUpdate = (data) => {
+      console.log('getUpdate', data);
+    }
+
+    return {
+      getUpdate
+    }
+  }
+}
+
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
 
 
+						AppButton.vue
 
-						arquivo.extensao
+<template>
+  <button @click="sendData">
+    {{ variant }}
+    <slot></slot>
+    <slot name="icon"></slot>
+  </button>
+</template>
 
+<script>
+export default {
+  props: {
+    variant: {
+      type: String,
+      default: 'success'
+    }
+  },
 
+  setup(props, { slots, emit }) {
+    const sendData = () => {
+      return emit('update', props.variant)
+    }
 
-						arquivo.extensao
+    return {
+      sendData
+    }
+  }
 
+}
+</script>
 
+==================================================================================================
+
+  O curso acabou aqui, teriam mais 7 aulas contendo um projeto, porém o professor retirou e disponibizou 
+  apenas em seu site, sendo agora pago. O projeto seria um "Mini Todo List".
 

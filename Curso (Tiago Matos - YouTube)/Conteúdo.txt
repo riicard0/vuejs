@@ -2332,4 +2332,151 @@ Composition API Ciclo de Vida:
 ---------------------------------------------------------------------------------------------------
 Composition API Props e Emit:
 
-  
+  Lembrando, dentro do "setup()" não temos acesso ao "this" pois o "setup()" é a fase de criação e essa 
+  propriedade ainda nem existe no "setup()".
+
+  A "props" iremos utilizar da mesma maneira que utilizávamos na "Options API", ou seja:
+
+	export default {
+	  props: {
+	    variant: {
+	      type: String,
+	      default: ''
+	    }
+	  }
+
+	  setup() {
+	    ...
+	  }
+	}
+
+  Lembrando que, não é preciso importar a "props" pois utilizamos ela fora do "setup()".
+
+  Para acessar a "props" dentro do "setup()" temos de setá-la como parâmetro:
+
+	setup( props, ctx ) {
+	  console.log( props.variant );
+	}
+
+  Então, assim conseguimos ter acesso a ela. O segundo parâmetro, foi exemplificado como "ctx" (contexto), 
+  são os atributos do componente. No console do navegador estará como "attrs" dentro de "[[target]]". 
+  Você também consegue acessar os "slots" através desse parâmetro dentro do navegador em "slots" dentro de 
+  "[[target]]", o padrão será "default" o "named slot" terão o nome que foi especificado por você.
+
+	setup( props, ctx ) {
+	  console.log( ctx );
+	}
+
+  Tem uma maneira para sermos mais específicos para acessar os "slots" com mais eficiência:
+
+	setup( props, { slots } ) {
+	  console.log( slots );
+	}
+
+  Dentro desse segundo parâmetro você também tem acesso ao "emit".
+
+	setup( props, { slots, emit } ) {
+	  console.log( slots );
+	  console.log( emit );
+	}
+
+  Acima exemplifique colocando mais de uma opção no segundo parâmetro, já que é um objeto agora.
+
+  Um exemplo com "emit":
+
+  Em "AppButton.vue":
+
+	<template>
+	  <button @click="sendData">
+	    {{ variant }}
+	    <slot></slot>
+	    <slot name="icon"></slot>
+	  </button>
+	</template>
+	
+	<script>
+	export default {
+	  props: {
+	    variant: {
+	      type: String,
+	      default: 'success'
+	    }
+	  },
+	
+	  setup(props, { slots, emit }) {
+	    const sendData = () => {
+	      return emit('update', props.variant)
+	    }
+	
+	    return {
+	      sendData
+	    }
+	  }
+	
+	}
+	</script>
+
+
+
+  Em "App.vue":
+
+	<template>
+	  <div>
+	    <br><br>
+	
+	    <AppButton data-vue="Jon" @update="getUpdate" variant="danger">
+	
+	      Save
+	
+	      <template #icon>Icon</template>
+	    </AppButton>
+	
+	  </div>
+	</template>
+	
+	<script>
+	import AppButton from '@/components/AppButton.vue'
+	
+	export default {
+	  name: 'App',
+	
+	  components: {
+	    AppButton
+	  },
+	
+	  setup() {
+	    const getUpdate = (data) => {
+	      console.log('getUpdate', data);
+	    }
+	
+	    return {
+	      getUpdate
+	    }
+	  }
+	}
+
+	</script>
+
+  No arquivo "AppButton.vue" fizemos:
+
+  Ou seja, criamos um evento de click com a diretiva "v-on" chamado "@click="sendData"". Após, criamos 
+  uma variável dentro de "setup()" chamado "sendData" que recebe uma "arrow function" que retorna o 
+  "emit" (que está sendo chamado no segundo parâmetro de "setup( props, { emit } )"). O "emit" tem como 
+  primeiro parâmetro o evento reativo que estamos mandando para o outro arquivo, chamado no caso de 
+  "update" e como segundo parâmetro o valor que será enviado reativamente. E no final, temos de retornar 
+  "sendData" para ser visível no "template".
+
+  Agora no arquivo "App.vue" fizemos:
+
+  Recebemos o evento reativo do outro arquivo "@update" e lhe atribuímos como valor uma função chamada 
+  "getUpdate". Dentro de "setup()" criamos a variável "getUpdate" e atribuímos uma "arrow function" 
+  contendo dentro dos parênteses um parâmetro chamado "data" que recebe aquele valor do segundo parâemetro 
+  do "emit", do outro arquivo. E apenas para exemplificação setamos um "console.log()" com uma "string" e 
+  chamando o parâmetro "data".
+
+===========================================================================================================
+
+  O curso do professor "Tiago Matos" do canal no YouTube "Tiago Matos" acabou por aqui, teriam mais 7 
+  aulas com o projeto "Mini ToDo List", porém ele retirou e disponibilizou apenas em seu site sendo agora 
+  pago.
+

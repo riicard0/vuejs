@@ -2,58 +2,33 @@
   <div>
     <br><br>
 
-    <AppHook v-if="showAppHook" />
+    <AppButton data-vue="Jon" @update="getUpdate" variant="danger">
 
-    <button @click="showAppHook = !showAppHook">
-      Toggle
-    </button>
+      Save
 
-    <h6>User:</h6>
-    {{ user.first_name }}
-
-    <br><br>
-
-    <h6>Full name:</h6>
-    {{ fullName }}
-
-    <br><br>
-
-    <button @click="user.first_name = 'Sansa'">Atualizar</button>
+      <template #icon>Icon</template>
+    </AppButton>
 
   </div>
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue';
-import AppHook from '@/components/AppHook.vue'
+import AppButton from '@/components/AppButton.vue'
 
 export default {
   name: 'App',
 
   components: {
-    AppHook
+    AppButton
   },
 
   setup() {
-    const user = ref({
-      first_name: 'Jon',
-      last_name: 'Snow'
-    })
-
-    const showAppHook = ref(true)
-
-    const fullName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
-
-    watch(user, () => {
-      console.log('Lógica cabulosa');
-    }, {
-      deep: true
-    })
+    const getUpdate = (data) => {
+      console.log('getUpdate', data);
+    }
 
     return {
-      user,
-      fullName,
-      showAppHook
+      getUpdate
     }
   }
 }
