@@ -1,0 +1,12 @@
+===========================================================================================================
+Continuação do aprendizado de "Vue.js" pelo curso no YouTube do canal Pablo Code:
+
+	Versão 1: https://www.youtube.com/playlist?list=PLxd1RHU8YgYmcuBAy_xpFUW_775f7SpF7
+	Versão 2: https://www.youtube.com/playlist?list=PLxd1RHU8YgYlF3Wk8-SW7UEowbqhBXtkp
+
+---------------------------------------------------------------------------------------------------
+
+  Estou colocando dentro da pasta do curso os scrips com nomes de "Exemplos".
+
+
+
