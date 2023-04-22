@@ -5,8 +5,71 @@ Continuação do aprendizado de "Vue.js" pelo curso no YouTube do canal Pablo Co
 	Versão 2: https://www.youtube.com/playlist?list=PLxd1RHU8YgYlF3Wk8-SW7UEowbqhBXtkp
 
 ---------------------------------------------------------------------------------------------------
+Componente Dinâmico:
 
-  Estou colocando dentro da pasta do curso os scrips com nomes de "Exemplos".
+  Você tendo criado um componente novo, para exemplo chamei de "Perfil.vue", que queira importá-lo 
+  dinamicamente,faça:
+
+  Na tag "template" você adicionará:
+
+	<template>
+	  <keep-alive>
+	    <component :is="componenteDinamico"></component>
+	  </keep-alive>
+
+	</template>
+
+  Na tag "script" você adicionará:
+
+	<script>
+	  import { defineAsyncComponent } from 'vue';
+
+	  setup() {
+	    const componenteDinamico = defineAsyncComponent( () => import( '@/components/Perfil.vue' ) );
+	  }
+
+	  return {
+	    componenteDinamico
+	  }
+
+	</script>
 
 
+  Lembrando que a tag "keep-alive" serve para guardar nosso componente no cache, para evitar que quando 
+  formos carregar a página novamente precisemos recarregá-lo.
 
+---------------------------------------------------------------------------------------------------
+Ciclo de Vida:
+
+  Ainda não falamos sobre o "onActivated", "onDeactivated" e o "onErrorCaptured".
+
+  Simplesmente quando a função do "keep-alive" estiver ativada o "onActivated" será ativado, quando 
+  desativar a função, o "onDeactivated" será ativado.
+
+  O "onErrorCaptured" captura erro dos filhos.
+
+  Exemplo:
+
+	<template>
+	  <keep-alive v-if="false">
+	    <component :is="componenteDinamico"></component>
+	  </keep-alive>
+	</template>
+
+	<script>
+	  import { onActivated, onDeactivated } from 'vue';
+
+	  export default {
+	    setup() {
+	      onActivated( () => {
+	        console.log( 'Cache ativado' );
+	      } );
+
+	      onDeativated( () => {
+	        console.log( 'Cache desativado' );
+	      } );
+	    }
+	  }
+	</script>
+
+---------------------------------------------------------------------------------------------------
