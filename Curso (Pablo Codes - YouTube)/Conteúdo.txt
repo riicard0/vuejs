@@ -1,3 +1,5 @@
+Ao final do curso adicionar todo esse conteúdo abaixo junto ao curso do Tiago Matos, apenas 
+complementando...
 ===========================================================================================================
 Continuação do aprendizado de "Vue.js" pelo curso no YouTube do canal Pablo Code:
 
@@ -71,5 +73,105 @@ Ciclo de Vida:
 	    }
 	  }
 	</script>
+
+---------------------------------------------------------------------------------------------------
+Diferenças entre "ref" e "reactive":
+
+  "ref" geralmente vai lidar com valores string, number e booleans.
+
+  "reactive" geralmente vai lidar com objetos.
+
+  É recomendado interagir com a DOM através do "ref".
+
+  Com "reactive" podemos utilizar o operador "spread". O operador "..." ("spread") é uma maneira 
+  conveniente de passar todas as propriedades de um objeto como propriedades individuais para um 
+  componente ou função.
+
+  Exemplo:
+
+	<script>
+	import { reactive } from 'vue';
+
+	export default {
+	  setup(){
+	    const objetos = reactive({
+	      paises: [
+	        { id: 1, nome: "USA" },
+	        { id: 2, nome: "Brasil" }
+	      ]
+	    });
+
+	    return {
+	      ...objetos
+	    }
+	  }
+	}
+	</script>
+
+	<template>
+	  <div>
+	    {{ paises }}
+	  </div>
+	</template>
+
+  Assim você poderá referenciar a propriedade do objeto reativo sem precisar referenciar o objeto 
+  diretamente, somente chamando a propriedade já conseguimos acessar esse objeto em questão.
+
+---------------------------------------------------------------------------------------------------
+Diretiva "v-once":
+
+  Essa diretiva não é comumente utilizada. A proposta dele é renderizar somente uma vez, porém esse 
+  comando não é muito útil numa situação real de projeto.
+
+---------------------------------------------------------------------------------------------------
+Diretiva "v-pre":
+
+  Essa diretiva basicamente ilustra exatamente o que foi proposto para mostrar, exemplo:
+
+	<template>
+	  <p v-pre>Você digitou {{ nome }}</p>
+	</template>
+
+  A resposta dele na sua página em tempo real do projeto irá ser:
+
+	Você digitou {{ nome }}
+
+  Ou seja, mesmo tendo coisa reativa ali, ele irá ignorar e mostrar exatamente o que foi pre-ordenado.
+
+---------------------------------------------------------------------------------------------------
+Diretiva "v-on":
+
+  Alguns eventos de mouse para adicionar:
+
+	click		-	clicar uma vez
+	mouseup		-	mouse passar por cima
+	dblclick	-	clicar duas vezes
+	mousemove	-	mouse mover por cima
+	mouseout	-	mouse sair de cima
+	mousewheel	-	quando o mouse estiver pressionado
+
+  Alguns eventos de tecla para adicionar:
+
+	keyup		-	ao clicar alguma tecla
+	keyup		-	efeito "out" quando clicar em alguma tecla
+	keypress	-	ao pressionar alguma tecla
+
+  Temos os modificadores que trabalham junto também:
+
+	keyup.enter	-	só executará determinado comando quando o "enter" for clicado
+	keyup.tab	-	só executará determinado comando quando o "tab" for clicado
+
+  Outros exemplos com "@submit", ".prevent" e ".trim":
+
+	<form @submit.prevent="enviarNome">
+	  <input type="text" v-model.trim="txt">
+	</form>
+
+  Aqui temos o evento "submit" de enviar basicamente junto com o sufixo "prevent" para previnir de alguns 
+  eventos padrões aconteçam como "refresh" da página.
+
+  Exemplificamos acima também um modificador chamado "trim" junto ao "v-model" que ao enviarmos esse 
+  formulário, por exemplo, se o usuário colocar um monte de espaço em branco, o modificador identificará e 
+  irá ignorar.
 
 ---------------------------------------------------------------------------------------------------
