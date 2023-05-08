@@ -1,27 +1,36 @@
 <template>
   <div>
-    <button @click="mostraNome()">Clique aqui</button>
-    <button @dblclick="mostraNome()">Clique aqui</button>
-    <button>Clique aqui</button>
+    <div v-for="(pais, i) in paises" :key="i">
+      <ProjetoPaises :pais="pais" @pais="setaPais($event)" />
+    </div>
+
+    <h1 style="color: red;">{{ paisEscolhido }}</h1>
   </div>
 </template>
 
 <script>
+import ProjetoPaises from '@/components/ProjetoPaises.vue';
 import { ref } from 'vue';
 
 export default {
-  setup() {
-    //variable
-    const nome = ref("dom");
+  components: {
+    ProjetoPaises
+  },
 
-    function mostraNome() {
-      alert('Olá ' + nome.value)
+  setup() {
+    const paises = ['Brasil', 'Angola', 'Cabo Verde', 'Alemanha', 'Argentina'];
+
+    const paisEscolhido = ref('');
+
+    function setaPais(e) {
+      paisEscolhido.value = e;
     }
 
     return {
-      nome,
-      mostraNome
-    }
+      paises,
+      setaPais,
+      paisEscolhido
+    };
   }
 }
 </script>

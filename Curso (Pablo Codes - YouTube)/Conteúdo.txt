@@ -175,3 +175,69 @@ Diretiva "v-on":
   irá ignorar.
 
 ---------------------------------------------------------------------------------------------------
+Diretiva "v-html":
+
+  Basicamente uma diretiva que executa o procedimento de acordo com o valor passado, exemplo:
+
+	<template>
+	  <div>
+	    <div v-html="exemplo"></div>
+	  </div>
+	</template>
+
+	<script>
+	  export default {
+	    setup() {
+	      //variable
+	      const exemplo = "<h1>Aprendendo sobre v-html</h1>"
+
+	      return {
+	        exemplo
+	      }
+	    }
+	  }
+	</script>
+
+
+  Ou seja, chamamos a variável "exemplo" lá na diretiva e executou uma tag sendo o valor da variável.
+
+  Essa forma seria uma forma de injetar "html" em nosso código, no inspecionar da página não aparecerá 
+  como uma diretiva, mas sim como o próprio código "html" já estando ali.
+
+  Temos de tomar cuidado pois o "html" renderizado como fizemos pode causar um problema que é chamado de 
+  "Cross-Site Scripting" (é quando criminosos cibernéticos injetam scripts maliciosos no conteúdo do site 
+  alvo), então temos de saber se realmente precisaremos utilizar ou não, essa diretiva.
+
+---------------------------------------------------------------------------------------------------
+Diretiva "v-text":
+
+  Basicamente o mesmo funcionamento na prática da diretiva "v-html", porém o "v-text" pelo próprio nome 
+  fica claro que é para textos.
+
+  Exemplo:
+
+	<template>
+	  <div>
+	    <input type="text" v-model="nome"/>
+	    <p v-text="nome"></p>
+	  </div>
+	</template>
+
+	<script>
+	  import { ref } from "vue";
+
+	  export default {
+	    setup() {
+	      //variable
+	      const nome = ref("");
+
+	      return {
+	        nome
+	      }
+	    }
+	  }
+	</script>
+
+  O "v-text" é uma opção ao "data binding"
+
+---------------------------------------------------------------------------------------------------

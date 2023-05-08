@@ -10,6 +10,13 @@ export default {
   name: 'App',
   components: {
     ProjetoTutorial
+  },
+
+  setup() {
+
+    return {
+
+    };
   }
 }
 </script>
