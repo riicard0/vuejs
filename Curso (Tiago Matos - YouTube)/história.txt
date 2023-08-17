@@ -1,4 +1,6 @@
-Vue vs React:
+=================================================== Vue vs React ===================================================
+
+> Vue.js
 
   Vue é um framework flexível e leve baseado em JavaScript que oferece ferramentas web poderosas para o 
   desenvolvimento de projetos web de vanguarda modernistas. O Vue também é considerado como um framework 
@@ -14,7 +16,7 @@ Vue vs React:
   do ano seguinte.
 
   Aplicativos populares da Web construídas com Vue
-  Aqui está uma lista de aplicativos web populares construídas usando o Vue,
+  Aqui está uma lista de aplicativos web populares construídas usando o Vue:
 
 	Gitlab
 	Grammarly
@@ -26,6 +28,8 @@ Vue vs React:
 	Font Awesome
 
 ----------------------------------------------------------------------------------------
+
+> React.js
 
   React é uma biblioteca JavaScript de código aberto que pode ser usada para criar aplicativos web com 
   interfaces de usuário sofisticadas. React permite que os desenvolvedores construam componentes 
@@ -40,7 +44,7 @@ Vue vs React:
   React, é a base do React.
 
   Aplicativos web populares construídas com React
-  Aqui está uma lista de aplicativos web populares construídas usando o React,
+  Aqui está uma lista de aplicativos web populares construídas usando o React:
 
 	Facebook
 	Netflix
@@ -52,10 +56,199 @@ Vue vs React:
 	WhatsApp
 	Dropbox
 
+----------------------------------------------------------------------------------------
+
+> Principais características da Vue
+
+  - "Virtual DOM" é um conceito implementado por vários frameworks JavaScript, incluindo o Vue. Ao invés de se 
+    ajustar ao DOM, um duplicado virtual do DOM é construído e apresentado na forma de frameworks de dados JS 
+    (JavaScript). Quaisquer modificações nos frameworks de dados JavaScript são feitas primeiro, e então o último é 
+    combinado com o framework de dados iniciais.
+
+  - "Vinculação de dados bidirecionais": A Vue oferece uma funcionalidade de ligação bidirecional, como parte do 
+    seu framework MVVM. Com o uso de uma diretiva binding chamada v-bind fornecida com Vue, esta funcionalidade 
+    permite a você editar ou aplicar valores a elementos HTML, mudar o estilo e aplicar classes. Isto difere de 
+    frameworks como React, que oferecem apenas comunicação unidirecional.
+
+  - Os "componentes" são objetos Vue que têm elementos HTML personalizados e, notavelmente, podem ser reutilizados. 
+    Objetos Vue e elementos HTML interagem uns com os outros através de props(propriedades) e eventos. O bloco de 
+    código de um componente Vue é igualmente essencial para o desenvolvimento de aplicativos Vue que são estáveis e 
+    escaláveis.
+
+  - As "propriedades computadas" ajudam a ouvir as modificações introduzidas nos elementos da IU e a executar a 
+    lógica relevante, eliminando a necessidade de codificação adicional. Quando pretendemos trabalhar na alteração 
+    de uma variável que depende de outra propriedade ser alterada, devemos usar uma propriedade calculada. Outros 
+    atributos de dados influenciam fortemente as propriedades calculadas.
+
+  - "Transições e animações CSS": Quando elementos HTML são adicionados, alterados ou excluídos do DOM, este 
+    recurso oferece múltiplos métodos para realizar uma transição. Ele vem com um componente de transição embutido 
+    que envolve o elemento que é responsável pelo retorno do efeito de transição. Os desenvolvedores podem 
+    facilmente usar bibliotecas de animação de terceiros para melhorar a experiência do usuário.
+
+  - "Watcher" são usados em dados que provavelmente mudarão regularmente, tais como elementos de entrada de 
+    formulário. Um desenvolvedor não precisa realizar nenhuma ação adicional neste caso. Watcher lida com qualquer 
+    atualização de dados enquanto ainda mantém o código simples e rápido.
+
+  - Watchers, métodos e propriedades computadas podem ser chamados de três formas principais do componente que 
+    podem fazer uso da natureza reativa. Quando você precisa fazer uma ação assíncrona ou custosa baseada na 
+    mudança de dados, os Watchers são a melhor opção.
+
+----------------------------------------------------------------------------------------
+
+> Principais características do React
+
+  O React também tem algumas características que chamam a atenção e que são muito úteis para conseguir um 
+  aplicativo empresarial em pleno funcionamento, porém como o foco é no Vue, ao final deixarei o link deste artigo 
+  caso queira ver mais sobre o que foi falado sobre React.
+
+----------------------------------------------------------------------------------------
+
+> Vue vs React: Semelhanças e recursos comuns
+
+  A Vue foi criada tomando React como inspiração. Portanto, algumas semelhanças podem ser encontradas como a 
+  seguir:
+
+	Suporte a Aplicativos Web Progressivas (PWA)
+	Uso do Virtual DOM
+	Veja os componentes que são tanto compostáveis quanto reativos
+	Código JavaScript
+	Foco em uma biblioteca central, com bibliotecas parceiras cobrindo redes e gerenciamento estatal universal
+	Capacidade de integração com qualquer aplicativo web atual
+
+----------------------------------------------------------------------------------------
+
+> Vue vs React: Qual é o melhor?
+
+  - "Popularidade e mercado de trabalho": Este concurso foi ganho pela React. Como o Facebook apoia esta 
+    tecnologia, não é surpreendente que ela tenha uma maior popularidade e comunidade. A Vue tem uma comunidade 
+    menor, tendo recursos e módulos limitados, mas ainda é apoiada por Evan You e pela equipe.
+
+    React está bem à frente da Vue em termos de oportunidades de trabalho, já que existe desde 2013 e tem sido 
+    defendida pelo gigante das mídias sociais no Facebook. A Vue, por outro lado, é uma nova empreendedora que 
+    ainda está ganhando força.
+
+  - "Curva de aprendizagem": O Vue é de longe o mais simples de estudar e entender todos os frameworks JavaScript. 
+    Estima-se que leve de algumas horas a menos de uma semana para aprender. Tudo que é necessário é um 
+    entendimento básico de como o ES6 funciona e algum conhecimento de programação JavaScript. A documentação da 
+    Vue também é simples de entender, já que não é tão extensa quanto a de outros frameworks.
+
+  - "Desempenho (Velocidade)": O status do aplicativo Vue fica mais incerto a cada nova opção ou adição de 
+    componentes, tornando mais difícil para o aplicativo carregar mais rapidamente. Felizmente, esta framework 
+    inclui um virtual DOM para aumentar a velocidade do aplicativo. Uma das características mais importantes da 
+    Vue é o "Lazy Loading" (carregamento preguiçoso). Ele ajuda na redução do tempo de carga.
+
+    O desempenho de um aplicativo React é mais rápido, com um desempenho mais simples na experiência do 
+    cliente e componentes discretos que operam bem juntos. A framework baseada em componentes do React ajuda no 
+    desenvolvimento de aplicativos de página única mais poderosas, enquanto a reusabilidade reduz a complexidade 
+    do código e a diminuição da interação DOM acelera o carregamento de páginas. Além disso, a biblioteca foca em 
+    fazer modificações essenciais no website sem ter que recarregar a página inteira. Como resultado, ela evita o 
+    desperdício no carregamento da página, mas ao invés disso atualiza o conteúdo.
+
+  - "Componentes e extensibilidade": Quando se trata de desenvolver interfaces de usuário baseadas em 
+    componentes, as extensas bibliotecas de componentes em Vue and React facilitam a reutilização do código, 
+    aumentam a produtividade do desenvolvedor, assim como aceleram o processo de desenvolvimento.
+
+  - "Gerenciamento do estado": Como os dados de estado no React são imutáveis e não podem ser modificados 
+    imediatamente, você deve usar a função setState() (ou usar o hook SetState() para atualizar qualquer coisa no 
+    estado local.
+
+    Entretanto, como o atributo de dados no objeto Vue funciona como o coletor de dados do aplicativo, não há 
+    razão para executar um método como setState() para mudar o estado em Vue.
+
+  - "Ferramentas e templates para simplificar o desenvolvimento": Desde 2016, React tem fornecido uma 
+    ferramenta CLI de terceiros chamada create-react-app que ajuda os programadores a completar tarefas como a 
+    construção de aplicativos, scripts, e assim por diante. Anteriormente, os programadores do React tinham que 
+    replicar arquivos de aplicativos anteriores ou começar do zero. Não levava muito tempo, mas era um esforço 
+    tedioso.
+
+    Vue, do outro lado, tem uma ferramenta chamada Vue CLI que permite a construção rápida de projetos. A 
+    Vue CLI tem várias vantagens, incluindo a capacidade de adicionar plugins em qualquer ponto durante o projeto 
+    e modificações simples.
+
+  - "Ecossistema": Vue é um framework autônoma, enquanto React requer o uso de bibliotecas externas. Este é um 
+    dos contrastes mais significativos entre as duas tecnologias. Para o roteamento e gerenciamento do estado, 
+    React depende de outros sistemas como Flux/Redux. Esses frameworks facilitam a depuração, fornecendo uma única 
+    maneira de mudar o estado. Como o Facebook delegou o gerenciamento do React aos usuários, o ecossistema tem 
+    se tornado cada vez mais fraturado.
+
+    A Vue tem um número menor de bibliotecas parceiras. No entanto, a Vue atualmente inclui recursos que 
+    precisam do uso de um módulo no React, tais como validação de adereços. Os principais frameworks da Vue, 
+    tais como Vuex e Vue-router, são mantidas e suportadas pela equipe da Vue.
+
+  - "Segurança": Vue e React têm ambas falhas de segurança, embora os aplicativos Vue sejam um pouco mais 
+    fáceis de proteger do que os aplicativos baseados em React. Enquanto as defesas automáticas contra problemas 
+    XSS não estão disponíveis, os programadores Vue podem limpar o código HTML antes de implementá-lo ou usar 
+    bibliotecas adicionais para ajudar a prevenir assaltos. Você pode gerar diretamente páginas web e proteger 
+    os aplicativos tanto antes como depois da geração em circunstâncias em que você sabe que o HTML é seguro.
+
+    Para se proteger contra vulnerabilidades XSS, injeções SQL e outras ameaças, a segurança React depende do 
+    programador seguir os padrões de segurança. Embora React seja simples de usar, assegurar que os projetos 
+    React sejam seguros requer muitas habilidades e experiência.
+
+  - "Desenvolvimento móvel": React Native integra as maiores características de desenvolvimento nativo e 
+    React, um kit de ferramentas JavaScript topo de linha para a criação de interfaces de usuário. Você pode 
+    utilizar o React Native com seus aplicativos Android e iOS pré-existentes agora mesmo, ou você pode construir 
+    a partir do zero e construir um aplicativo totalmente novo. Com os componentes do React Native React, você 
+    pode redirecionar até 99% do seu código JS para o Android e iOS. Como consequência, um aplicativo 
+    multiplataforma que aparece e funciona como um aplicativo iOS/Android puro foi criado.
+
+    Apesar da Vue ficar atrás do React, ela oferece várias opções de desenvolvimento móvel. Primeiro, há 
+    o NativeScript, que permite escrever aplicativos Vue e também tê-las compiladas em aplicativos iOS/Android 
+    nativas. Depois, há o Capacitor, criado pelas mesmas pessoas que criaram o Ionic. Usando uma API simples, 
+    você pode integrar o Capacitor em qualquer site Vue pré-existente e fornecer capacidades iOS/Android nativas. 
+    Finalmente, o Vue Native combina os benefícios dos ecossistemas Vue e React Native. Neste React pode ser 
+    tomado como o mais adequado para o desenvolvimento móvel.
+
+  - "Teste e depuração": Reactjs vem com vários test runners úteis, o que torna o processo de desenvolvimento 
+    mais fácil de seguir. Os test runners como Jest, Mocha e muitos outros, por exemplo, permitem que os 
+    testadores sigam um método comum de execução de conjuntos de teste que os ajuda a descobrir falhas em 
+    configurações reais do navegador, funções desnecessárias e o ponto onde ocorre manipulação excessiva de 
+    funções. Isto encurta o tempo de colocação no mercado, acelera a implantação de aplicativos e encoraja 
+    uma atmosfera mais produtiva.
+
+    Uma vez que a Vue está apenas começando as capacidades de teste são padrão, mas simples e eficazes. Ele 
+    não fornece ferramentas muito luxuosas e não coloca em risco a capacidade do código de ser testado. Vue 
+    Testing Library e Vue Test Utils são duas das bibliotecas oficialmente recomendadas pela Vue. Como este 
+    framework suporta CI/CD e recarga a quente, é possível estabelecer mecanismos de feedback mais rápidos.
+
+  - "Suporte e comunidade": Facebook, o maior site de redes sociais, sempre apóia o React. A maior vantagem 
+    é que o Facebook tem uma equipe comprometida trabalhando na criação e refinamento do React regularmente. No 
+    entanto, a Vue não é apoiada por uma grande corporação. Isso não quer dizer que não tenha o suporte da 
+    comunidade ou que não seja popular. É porque a comunidade Vue não é tão grande quanto a comunidade React.
+
+    React tem muito mais de 331.000 perguntas sobre o StackOverflow. Além disso, desde o momento em que foi 
+    escrito, tem mais de 174.200 estrelas em Github. Quando se trata de Vue, há aproximadamente 83.400 perguntas 
+    sobre StackOverflow dentro de Vue e mais de 187.800 estrelas em Github.
+
+----------------------------------------------------------------------------------------
+
+> Desvantagens do Vue vs React
+
+  - As maiores desvantagens do Vue incluem:
+	Desafios com ligação bidirecional
+	Desafios no suporte móvel
+	Plugins limitados
+	Escalabilidade limitada
+	Programadores com experiência limitada
+	Demasiada flexibilidade na codificação
+	O uso da comunidade tem algumas limitações
+
+  - As maiores desvantagens do React incluem:
+	Devido ao rápido ritmo de crescimento, o ambiente está sempre mudando, o que dificulta a adaptação dos 
+	programadores.
+	Com uma atualização e aceleração tão rápidas, uma boa documentação é difícil de ser obtida.
+	O ReactJS apenas lida com as camadas de IU do aplicativo, portanto você precisará usar outras ferramentas 
+	para outras partes do desenvolvimento.
+	Se há muitos modelos e eles se sobrepõem, o JSX pode ser confuso.
+
+----------------------------------------------------------------------------------------
+
+> FONTES:
+
+	- https://kinsta.com/pt/blog/vue-vs-react/
 
 
+> SABER MAIS SOBRE "LAZY LOADING":
 
+	- https://kinsta.com/pt/blog/lazy-load-no-wordpress/
 
-	TERMINAR DE LER:
-
-		https://kinsta.com/pt/blog/vue-vs-react/

@@ -6,7 +6,7 @@ Intro:
   esse framework você consegue instalar pequenos componentes dentro do seu sistema antigo tanto quanto 
   num novo sistema. Resumindo, é um framework javascript para construir interfaces.
 
-  Na camada "Model View Controller Arquitetura" o Vue.js se encaixa no "View" pois ele trabalha com a 
+  Na camada MVC (a arquitetura "Model View Controller"), o Vue.js se encaixa no "View" pois ele trabalha com a 
   interface, na camada "Model" e "Controller" é relacionada a back-end então envolve outros assuntos.
 
   No Vue.js:
@@ -14,7 +14,6 @@ Intro:
 	- Tudo é componente
 	- Tudo é reativo
 	- Super rápido
-
 
   Componente de arquivo único, exemplo:
 
@@ -46,8 +45,8 @@ Intro:
 	  }
 	</style>
 
-  Ou seja, sendo "Componente de Árquivo Único", a visualização é melhor, pois não é preciso abrir 
-  vários arquivos para estilização ou script.
+  Ou seja, sendo "Componente de Arquivo Único" (SFC = Single File Component), a visualização é melhor, pois não é 
+  preciso abrir vários arquivos para estilização ou script.
 
 ---------------------------------------------------------------------------------------------------
 Formatação de Nomes:
@@ -66,7 +65,7 @@ Formatação de Nomes:
 	questionTwo
 	perguntaTresResposta
 
-  Ou seja, a primeira palavra sempre com a primeira letra minúscula, e as palavras seguintes sempre com a 
+  Ou seja, a primeira palavra sempre com a primeira letra minúscula e as palavras seguintes sempre com a 
   primeira letra maiúsculas.
 
   - Nome das propriedades do objeto:
@@ -96,7 +95,7 @@ Diretivas:
 
 ---------------------------------------------------------------------------------------------------
 
-Dependências para conseguir assistir o curso:
+Dependências para conseguir assistir um curso de Vue.js:
 
   - Javascript Intermediário
   - HTML
@@ -188,7 +187,7 @@ Política de Segurança do Windows 10 contra Scripts:
 
   No Windows 10, há uma política de segurança contra scripts que não forem assinados, 
   evitando que rode em sua máquina, para conseguirmos atuar sobre isso, rode dentro do Powershell, 
-  lembrando que temos que executar o comando em "modo administrador":
+  lembrando que temos que executar o comando com o Powershell em "modo administrador":
 
 	Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
 
